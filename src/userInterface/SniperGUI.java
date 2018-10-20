@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import logic.DecoRecord;
 import userInterface.buttonControls.DecoListView;
+import userInterface.historyRecord.Record;
 
 
 public class SniperGUI extends Application{
@@ -118,7 +119,7 @@ public class SniperGUI extends Application{
 
 
 
-        Button button_A = new Button("A");
+        Button button_A = new Button("Next");
         button_A.setPrefSize(100, 30);
         button_A.setOnAction(event -> {
             decoRecord.nextSet();
@@ -155,10 +156,8 @@ public class SniperGUI extends Application{
 
         borderPane.setTop(menuBar);
 
-
-        //
-        //
-        //primaryStage.setOnCloseRequest(event -> decoListView.hide());
+        Record record = new Record();
+        borderPane.setRight(record);
 
         primaryStage.setScene(scene);
 
