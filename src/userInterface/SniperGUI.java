@@ -129,6 +129,9 @@ public class SniperGUI extends Application{
             clearSlots();
             decoListContainer.updateRecord();
         });
+        button_A.setOnMouseReleased(event -> {
+            decoListContainer.setVvalue(1.0);
+        });
         hBoxAction.getChildren().add(button_A);
 
         MenuBar menuBar = new MenuBar();
@@ -151,7 +154,7 @@ public class SniperGUI extends Application{
         menuActClear.setOnAction(event -> {
             decoRecord.clearAll();
             clearSlots();
-            decoListContainer.clear();
+
         });
         menuActions.getItems().addAll(menuActNew, menuActPrevious, menuActNext, menuActMeldLevel, menuActClear);
         MenuItem menuOptSave = new MenuItem("Save");

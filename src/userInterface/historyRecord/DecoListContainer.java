@@ -5,20 +5,26 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
-//TODO change vbox to scrollpane and nest vbox in it
-public class DecoListContainer extends VBox {
 
+public class DecoListContainer extends ScrollPane {
+
+    private VBox decoListBox;
     private ArrayList<ArrayList<Integer>> decoList;
     private ArrayList<DecoListCell> cellsList;
     private int focusedSet;
 
     public DecoListContainer(ArrayList<ArrayList<Integer>> decoList) {
-        super(5);
-        setStyle("-fx-background-color: #4286f4");
+        setStyle("-fx-background: #4286f4");
+        setBackground(getBackground());
         setPadding(new Insets(5, 5, 5, 5));
+        setPrefWidth(100);
         this.decoList = decoList;
         focusedSet = decoList.size() - 1;
         cellsList = new ArrayList<>();
+
+        decoListBox = new VBox(5);
+        decoListBox.setStyle("-fx-background-color: #4286f4");
+        this.setContent(decoListBox);
 
     }
 
@@ -34,14 +40,14 @@ public class DecoListContainer extends VBox {
             System.out.println(cellsList);
             counter++;
         }
-        getChildren().addAll(cellsList);
+        decoListBox.getChildren().addAll(cellsList);
         resetFocusedProperty();
         updateFocusedSet();
     }
 
     public void clear(){
         cellsList.clear();
-        getChildren().clear();
+        decoListBox.getChildren().clear();
     }
 
     public void updateFocusedSet(){
