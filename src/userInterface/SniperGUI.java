@@ -1,26 +1,18 @@
 package userInterface;
+
 import decos.Deco;
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import logic.DecoRecord;
 import userInterface.buttonControls.DecoListView;
-import userInterface.historyRecord.Record;
+import userInterface.historyRecord.DecoListContainer;
 
 
 public class SniperGUI extends Application{
@@ -40,14 +32,20 @@ public class SniperGUI extends Application{
         decoRecord = new DecoRecord();
 
         primaryStage.setTitle("DecoSniper");
-        primaryStage.setResizable(false);
+        //primaryStage.setResizable(false);
         BorderPane borderPane = new BorderPane();
+        VBox vBoxCenterPane = new VBox();
+        vBoxCenterPane.setAlignment(Pos.CENTER);
         HBox hBoxSlots = new HBox();
         HBox hBoxAction = new HBox();
+        DecoListContainer decoListContainer = new DecoListContainer(decoRecord.getDecoList());
+        decoListContainer.getStylesheets().add(SniperGUI.class.getResource("styleRecord.css").toExternalForm());
+        borderPane.setRight(decoListContainer);
+        BorderPane.setMargin(decoListContainer, new Insets(25, 25, 25, 25));
+        vBoxCenterPane.getChildren().addAll(hBoxSlots, hBoxAction);
         hBoxSlots.setAlignment(Pos.CENTER);
         hBoxAction.setAlignment(Pos.CENTER);
-        borderPane.setCenter(hBoxSlots);
-        borderPane.setBottom(hBoxAction);
+        borderPane.setCenter(vBoxCenterPane);
         hBoxSlots.setSpacing(10);
         hBoxSlots.setPadding(new Insets(25, 25, 25, 25));
         hBoxAction.setPadding(new Insets(0,0,25,0));
@@ -57,7 +55,7 @@ public class SniperGUI extends Application{
         button_1 = new Button("1");
         button_1.setPrefSize(50,50);
         button_1.setOnMouseClicked(event -> {
-            DecoListView decoListView = new DecoListView(decoRecord);
+            DecoListView decoListView = new DecoListView(decoRecord, decoListContainer);
             if(decoListView.isShowing()) {
                 decoListView.close();
             }
@@ -70,7 +68,7 @@ public class SniperGUI extends Application{
         button_2 = new Button("2");
         button_2.setPrefSize(50,50);
         button_2.setOnMouseClicked(event -> {
-            DecoListView decoListView = new DecoListView(decoRecord);
+            DecoListView decoListView = new DecoListView(decoRecord, decoListContainer);
 
             if(decoListView.isShowing()) {
                 decoListView.close();
@@ -84,7 +82,7 @@ public class SniperGUI extends Application{
         button_3 = new Button("3");
         button_3.setPrefSize(50,50);
         button_3.setOnMouseClicked(event -> {
-            DecoListView decoListView = new DecoListView(decoRecord);
+            DecoListView decoListView = new DecoListView(decoRecord, decoListContainer);
             if(decoListView.isShowing()) {
                 decoListView.close();
             }
@@ -101,6 +99,8 @@ public class SniperGUI extends Application{
             decoRecord.focusedSetPropertyIncrement();
             updateSlotsInfo();
             System.out.println("Focusedproperty: " + decoRecord.getFocusedSetProperty() + "numberofsets: " + decoRecord.getNumberOfSets());
+            decoListContainer.incrementFocusedProperty();
+            decoListContainer.updateFocusedSet();
         });
 
         Button buttonPrevSet = new Button("<");
@@ -109,6 +109,8 @@ public class SniperGUI extends Application{
             System.out.println("Previous");
             decoRecord.focusedSetPropertyDecrement();
             updateSlotsInfo();
+            decoListContainer.decrementFocusedProperty();
+            decoListContainer.updateFocusedSet();
         });
 
         hBoxSlots.getChildren().add(buttonPrevSet);
@@ -125,6 +127,7 @@ public class SniperGUI extends Application{
             decoRecord.nextSet();
             System.out.println(decoRecord.getDecoList());
             clearSlots();
+            decoListContainer.updateRecord();
         });
         hBoxAction.getChildren().add(button_A);
 
@@ -148,16 +151,26 @@ public class SniperGUI extends Application{
         menuActClear.setOnAction(event -> {
             decoRecord.clearAll();
             clearSlots();
+            decoListContainer.clear();
         });
         menuActions.getItems().addAll(menuActNew, menuActPrevious, menuActNext, menuActMeldLevel, menuActClear);
         MenuItem menuOptSave = new MenuItem("Save");
         MenuItem menuOptLoad = new MenuItem("Load");
-        menuOptions.getItems().addAll(menuOptLoad, menuOptSave);
+        MenuItem menuOptRecord = new MenuItem("Record");
+        menuOptRecord.setOnAction(event -> {
+            /*if(DecoListContainer.isVisible()){
+                DecoListContainer.setVisible(false);
+            }
+            else{
+                DecoListContainer.setVisible(true);
+            }*/
+            decoListContainer.updateRecord();
+        });
+        menuOptions.getItems().addAll(menuOptLoad, menuOptSave, menuOptRecord);
 
         borderPane.setTop(menuBar);
 
-        Record record = new Record();
-        borderPane.setRight(record);
+
 
         primaryStage.setScene(scene);
 
@@ -168,14 +181,15 @@ public class SniperGUI extends Application{
     }
 
     public void updateSlotsInfo(){
-        //if(decoRecord.getNumberOfSets() > decoRecord.getFocusedSetProperty() && decoRecord.getFocusedSetProperty() > 0) {
-           /* int decoid = decoRecord.getFocusedSet().get(0);
+        /*  if(decoRecord.getNumberOfSets() > decoRecord.getFocusedSetProperty() && decoRecord.getFocusedSetProperty() > 0) {
+            int decoid = decoRecord.getFocusedSet().get(0);
             System.out.println(decoid);
             String deconame = Deco.getDecoByID(decoid).getName();
             System.out.println(deconame);
             System.out.println("FocusedProperty: " + decoRecord.getFocusedSetProperty());
-*/
-            //button_1.setText(deconame);
+
+            button_1.setText(deconame);
+          */
 
             button_1.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(0)).getName());
             button_2.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(1)).getName());

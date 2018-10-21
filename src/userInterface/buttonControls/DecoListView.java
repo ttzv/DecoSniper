@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import logic.DecoRecord;
+import userInterface.historyRecord.DecoListContainer;
 
 import java.util.ArrayList;
 
@@ -25,11 +26,13 @@ public class DecoListView extends Stage {
    private ObservableList<Deco> decoObservableList;
 
    private DecoRecord decoRecord;
+   private DecoListContainer decoListContainer;
 
-    public DecoListView(DecoRecord decoRecord){
+    public DecoListView(DecoRecord decoRecord, DecoListContainer decoListContainer){
         super(StageStyle.UNDECORATED);
 
         this.decoRecord = decoRecord;
+        this.decoListContainer = decoListContainer;
 
         decoObservableList = FXCollections.observableArrayList();
         decoObservableList.addAll(Deco.getDecosList());
@@ -39,7 +42,7 @@ public class DecoListView extends Stage {
         for (Deco d : decoObservableList) {
             listView.getItems().add(d.getName());
         }
-        setScene(new Scene(listBox, 250, 450));
+        setScene(new Scene(listBox, 250, 300));
         listBox.getChildren().addAll(searchInput, listView);
         focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!observable.getValue() && isShowing()){
@@ -60,6 +63,7 @@ public class DecoListView extends Stage {
             Deco choice = Deco.getDecoByName(newValue.toString());
             decoRecord.setSlotInFocusedSet(slot, choice.getId());
             DecoListView.this.hide();
+            decoListContainer.updateRecord();
         });
     }
 
