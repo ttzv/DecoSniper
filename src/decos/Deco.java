@@ -108,7 +108,7 @@ public enum Deco {
     Vitality("Vitality", "Health Boost", 3, 8, 6, 96),
     WaterRes("Water Res", "Water Resistance", 3, 4, 5, 97),
     WindResist("Wind Resist", "Windproof", 5, 8, 6, 98),
-    Empty("null", "null", 0, 0, 0, 0);
+    Empty("Empty", "Empty", 0, 0, 0, 0);
 
 
     private final String name;
@@ -117,6 +117,7 @@ public enum Deco {
     private final int meldPts;
     private final int rarity;
     private final int id;
+
 
     Deco(String name, String nameSkill, int maxLv, int meldPts, int rarity, int id) {
         this.name = name;
@@ -201,6 +202,34 @@ public enum Deco {
         ArrayList<Deco> decoList = new ArrayList<>();
         for (Deco d : values()){
             decoList.add(d);
+        }
+        return decoList;
+    }
+
+    public static final ArrayList<Deco> getDefaultValuableDecos(){
+        ArrayList<Deco> decoList = new ArrayList<>();
+        for (Deco d : values()){
+            if(d.getRarity() == 8){
+                decoList.add(d);
+            }
+        }
+        return decoList;
+    }
+
+    public static final ArrayList<Integer> listDecoToId(ArrayList<Deco> decoList){
+        ArrayList<Integer> idList= new ArrayList<>();
+
+        for (Deco d : decoList){
+            idList.add(d.getId());
+        }
+
+        return idList;
+    }
+
+    public static final ArrayList<Deco> listIdToDeco(ArrayList<Integer> idList){
+        ArrayList<Deco> decoList = new ArrayList<>();
+        for (Integer i : idList){
+            decoList.add(getDecoByID(i));
         }
         return decoList;
     }

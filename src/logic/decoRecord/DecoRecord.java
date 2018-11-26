@@ -1,4 +1,4 @@
-package logic;
+package logic.decoRecord;
 
 import decos.Deco;
 import logic.questsCounter.DesiredDecos;
@@ -9,24 +9,22 @@ import java.util.*;
 public class DecoRecord {
     private ArrayList<ArrayList<Integer>> decoList;
     private ArrayList<Integer> decoSet;
-    private ArrayList<Integer> desiredDecoPlaces;
     private Scanner reader;
     private int numberOfSets = 0;
     private int observedSet = 1;
     private int focusedSet = 0;
     /**
-     * Variable containing information about place of rotation (1-1-2).
-     * 0 - not set
-     * 1 - first place
+     * Variable containing information about place of rotation (1-1-2).*
+     * 1 - first place (default)
      * 2 - second place
      * 3 - third place
      */
-    private int rotationStatus=0;
+    private int rotationStatus=1;
 
     public DecoRecord(){
         decoList = new ArrayList<>();
-        desiredDecoPlaces = new ArrayList<>();
         reader = new Scanner(System.in);
+        nextSet(); //creates new set at start
     }
 
     /**
@@ -34,7 +32,7 @@ public class DecoRecord {
      * progress quests when there are no sets left, if you do, rotationStatus and observedSet won't change.
      * @returns true if quest was completed succesfully, false if there was not enough sets generated.
      */
-
+    //TODO: implement
     public void doMeld(){
 
     }
@@ -44,7 +42,7 @@ public class DecoRecord {
      */
     public void skipByPlaces(int skipped){
         for (int i = 0; i <= skipped; i++){
-            decoList.remove(i);
+            decoList.remove(0);
         }
     }
 
@@ -75,9 +73,6 @@ public class DecoRecord {
      *
      * @return Current focused set lowered by one (integer)
      */
-    public int getFocusedSetProperty() {
-        return focusedSet-1;
-    }
 
     public void focusedSetPropertyIncrement(){
         if (focusedSet < numberOfSets) {
@@ -91,6 +86,10 @@ public class DecoRecord {
             focusedSet--;
         }
         else System.out.println("No previous sets");
+    }
+
+    public int getFocusedSetProperty() {
+        return focusedSet-1;
     }
 
     /**
@@ -132,7 +131,7 @@ public class DecoRecord {
      * Checks starting position in rotation and returns how many places to skip
      * @return 1 or 2 depending on place in rotation
      */
-    public int getCurrentRotationStatus() {
+    public int getSkipRotation() {
 
         int[] rotation = {1, 1, 2};
         System.out.println("rotationStatus from method is: " + rotationStatus);
@@ -155,22 +154,19 @@ public class DecoRecord {
         return decoList;
     }
 
-    public ArrayList<Integer> getDesiredDecoPlaces() {
-        return desiredDecoPlaces;
-    }
-
     public int getNumberOfSets() {
         return numberOfSets;
     }
 
     public void start(){
 
-        DesiredDecos desiredDecos = new DesiredDecos(decoList);
         System.out.println("List of default Valuable Decos: ");
         System.out.println(Deco.getDefaultValuableDecos());
 
         System.out.println("Which place of rotation are you in (1, 2, 3): ");
         rotationStatus = Integer.parseInt(reader.nextLine());
+
+        DesiredDecos desiredDecos = new DesiredDecos(decoList);
         for (int i = 0; i <= 10; i++) {
             System.out.println("Roll decos, if you get desired deco input its place here:");
             nextSet();
@@ -182,9 +178,8 @@ public class DecoRecord {
             }
             System.out.println("Sets: " + getNumberOfSets() +
                     "\nDecoList: " + getDecoList() +
-                    "\nDesiredDecos(Array): " + getDesiredDecoPlaces() +
                     "\nDesiredDecos(HashMap): " + desiredDecos.getValuableDecosMap() +
-                    "\nCurrent rota status: " + getCurrentRotationStatus() +
+                    "\nCurrent rota status: " + getSkipRotation() +
                     "\nCurrent observedSet: " + observedSet);
 
 
@@ -196,7 +191,7 @@ public class DecoRecord {
         }
         System.out.println("Testing simulation...");
 
-        RotationSimulator rotaSimNew = new RotationSimulator(desiredDecos.getValuableDecosMap(), getCurrentRotationStatus());
+        RotationSimulator rotaSimNew = new RotationSimulator(desiredDecos.getValuableDecosMap(), getSkipRotation());
         rotaSimNew.simulate();
         System.out.println("(new)Result is: \n" + rotaSimNew);
 

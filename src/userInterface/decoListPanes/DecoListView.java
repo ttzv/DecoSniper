@@ -1,11 +1,8 @@
-package userInterface.buttonControls;
+package userInterface.decoListPanes;
 
 import decos.Deco;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -13,10 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import logic.DecoRecord;
-import userInterface.historyRecord.DecoListContainer;
-
-import java.util.ArrayList;
+import logic.decoRecord.DecoRecord;
 
 public class DecoListView extends Stage {
 

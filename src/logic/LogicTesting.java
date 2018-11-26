@@ -1,6 +1,6 @@
 package logic;
 
-import logic.DecoRecord;
+import logic.decoRecord.DecoRecord;
 
 public class LogicTesting {
     public static void main(String[] args){

@@ -1,4 +1,4 @@
-package userInterface.historyRecord;
+package userInterface.decoListPanes;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;

@@ -1,4 +1,4 @@
-package userInterface.historyRecord;
+package userInterface.decoListPanes;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
@@ -26,6 +26,7 @@ public class DecoListContainer extends ScrollPane {
         decoListBox.setStyle("-fx-background-color: #4286f4");
         this.setContent(decoListBox);
 
+        updateRecord();
     }
 
     public void updateRecord(){

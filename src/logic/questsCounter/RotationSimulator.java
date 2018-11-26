@@ -1,4 +1,4 @@
-package logic;
+package logic.questsCounter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,7 +46,11 @@ public class RotationSimulator {
 
     }
 
-
+    /**
+     * Simulates completing a single quest. This manipulates the rotationStatus and current observedSet. Also you cannot
+     * progress quests when there are no sets left, if you do, rotationStatus and observedSet won't change.
+     * @returns true if quest was completed succesfully, false if there was not enough sets generated.
+     */
     public byte isQuestPossible(){
 
         if(rotationStatus > 0 && rotationStatus < 3){
@@ -82,14 +86,15 @@ public class RotationSimulator {
     }
 
     public void simulate(){
-        while (observedSet < decoKeySet.get(0)){
-            System.out.println("current observed: " + observedSet);
-            if(isQuestPossible() == 1){
-                remainingQuests++;
-            }
-            else if(isQuestPossible() == -1){
-                calculateMeld();
-                break;
+        if(decoKeySet.size() >= 1) {
+            while (observedSet < decoKeySet.get(0)) {
+                System.out.println("current observed: " + observedSet);
+                if (isQuestPossible() == 1) {
+                    remainingQuests++;
+                } else if (isQuestPossible() == -1) {
+                    calculateMeld();
+                    break;
+                }
             }
         }
     }
