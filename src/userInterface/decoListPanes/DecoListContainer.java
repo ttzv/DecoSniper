@@ -14,7 +14,9 @@ public class DecoListContainer extends ScrollPane {
     private int focusedSet;
 
     public DecoListContainer(ArrayList<ArrayList<Integer>> decoList) {
-        setStyle("-fx-background: #4286f4");
+        getStylesheets().add(getClass().getResource("decoListContainer.css").toExternalForm());
+        getStyleClass().add("main");
+        //setStyle("-fx-background: #4286f4");
         setBackground(getBackground());
         setPadding(new Insets(5, 5, 5, 5));
         setPrefWidth(100);
@@ -23,7 +25,7 @@ public class DecoListContainer extends ScrollPane {
         cellsList = new ArrayList<>();
 
         decoListBox = new VBox(5);
-        decoListBox.setStyle("-fx-background-color: #4286f4");
+        //decoListBox.setStyle("-fx-background-color: #4286f4");
         this.setContent(decoListBox);
 
         updateRecord();
@@ -34,7 +36,7 @@ public class DecoListContainer extends ScrollPane {
         Integer counter = 1;
         for (ArrayList decoSet : decoList){
             cellsList.add(new DecoListCell(
-                    counter.toString(),
+                    counter.toString() + "   ",
                     decoSet.get(0).toString(),
                     decoSet.get(1).toString(),
                     decoSet.get(2).toString()));
@@ -42,7 +44,7 @@ public class DecoListContainer extends ScrollPane {
             counter++;
         }
         decoListBox.getChildren().addAll(cellsList);
-        resetFocusedProperty();
+        //resetFocusedProperty();
         updateFocusedSet();
     }
 

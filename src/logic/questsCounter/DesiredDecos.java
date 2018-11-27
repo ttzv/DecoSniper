@@ -46,7 +46,11 @@ public class DesiredDecos {
 
     }
 
-    public void setValuablesList(ArrayList<Integer> valuablesList){
+    public void setDesiredDecoList(ArrayList<Integer> valuablesList){
         this.desiredDecoList = valuablesList;
+    }
+
+    public ArrayList<Integer> getDesiredDecoList() {
+        return desiredDecoList;
     }
 }

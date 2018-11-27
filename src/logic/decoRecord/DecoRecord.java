@@ -71,21 +71,26 @@ public class DecoRecord {
 
     /**
      *
-     * @return Current focused set lowered by one (integer)
+     * @return true if propertz was correctlz modified, otherwise false
      */
 
-    public void focusedSetPropertyIncrement(){
+    public boolean focusedSetPropertyIncrement(){
         if (focusedSet < numberOfSets) {
             focusedSet++;
+            return true;
         }
-        else System.out.println("No more sets to load");
+        else{
+
+            return false;
+        }
     }
 
-    public void focusedSetPropertyDecrement(){
+    public boolean focusedSetPropertyDecrement(){
         if (focusedSet > 1){
             focusedSet--;
+            return true;
         }
-        else System.out.println("No previous sets");
+        else return false;
     }
 
     public int getFocusedSetProperty() {

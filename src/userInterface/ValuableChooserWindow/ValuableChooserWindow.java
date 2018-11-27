@@ -60,7 +60,11 @@ public class ValuableChooserWindow {
         vBoxChooseButtons.setAlignment(Pos.CENTER);
 
         srcList = createList(Deco.getDecosList());
-        targetList = createList();
+        if(desiredDecos.getDesiredDecoList() == null || desiredDecos.getDesiredDecoList().isEmpty()) {
+            targetList = createList();
+        } else {
+            targetList = createList(Deco.listIdToDeco(desiredDecos.getDesiredDecoList()));
+        }
 
         sourceListView.setItems(srcList);
         this.targetListView.setItems(targetList);
@@ -112,7 +116,7 @@ public class ValuableChooserWindow {
 
             this.sourceListView.setItems(srcList);
 
-            desiredDecos.setValuablesList(Deco.listDecoToId(new ArrayList<>(targetList)));
+            desiredDecos.setDesiredDecoList(Deco.listDecoToId(new ArrayList<>(targetList)));
         });
 
         this.btnDel.setOnAction(event -> {
@@ -122,7 +126,7 @@ public class ValuableChooserWindow {
 
             this.targetListView.setItems(targetList);
 
-            desiredDecos.setValuablesList(Deco.listDecoToId(new ArrayList<>(targetList)));
+            desiredDecos.setDesiredDecoList(Deco.listDecoToId(new ArrayList<>(targetList)));
         });
     }
 

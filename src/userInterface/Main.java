@@ -17,6 +17,7 @@ import userInterface.decoListPanes.DecoListView;
 import userInterface.buttons.ButtonRotation;
 import userInterface.decoListPanes.DecoListContainer;
 import userInterface.simulationOutput.SimOutputPane;
+import userInterface.statusBar.StatusBar;
 
 
 public class Main extends Application{
@@ -59,6 +60,9 @@ public class Main extends Application{
         Scene scene = new Scene(borderPane, 600, 300);
         scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
         ButtonRotation buttonRotation = new ButtonRotation(decoRecord);
+
+        StatusBar statusBar = new StatusBar();
+        borderPane.setBottom(statusBar.getStatusBar());
 
         DesiredDecos desiredDecos = new DesiredDecos(decoRecord.getDecoList());
 
@@ -115,7 +119,10 @@ public class Main extends Application{
         buttonNextSet.setPrefSize(25, 50);
         buttonNextSet.setOnAction(event -> {
             System.out.println("Next");
-            decoRecord.focusedSetPropertyIncrement();
+            statusBar.clear();
+            if(!decoRecord.focusedSetPropertyIncrement()){
+                statusBar.set("No more sets to load");
+            }
             updateSlotsInfo();
             System.out.println("Focusedproperty: " + decoRecord.getFocusedSetProperty() + "numberofsets: " + decoRecord.getNumberOfSets());
             decoListContainer.incrementFocusedProperty();
@@ -126,7 +133,10 @@ public class Main extends Application{
         buttonPrevSet.setPrefSize(25, 50);
         buttonPrevSet.setOnAction(event -> {
             System.out.println("Previous");
-            decoRecord.focusedSetPropertyDecrement();
+            statusBar.clear();
+            if(!decoRecord.focusedSetPropertyDecrement()){
+                statusBar.set("No previous sets");
+            }
             updateSlotsInfo();
             decoListContainer.decrementFocusedProperty();
             decoListContainer.updateFocusedSet();
@@ -143,9 +153,11 @@ public class Main extends Application{
         Button button_A = new Button("Next");
         button_A.setPrefSize(100, 30);
         button_A.setOnMousePressed(event -> {
+            statusBar.clear();
             decoRecord.nextSet();
             System.out.println(decoRecord.getDecoList());
             clearSlots();
+            decoListContainer.resetFocusedProperty();
             decoListContainer.updateRecord();
         });
         button_A.setOnMouseReleased(event -> {

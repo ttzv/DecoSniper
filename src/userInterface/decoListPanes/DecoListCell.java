@@ -54,7 +54,7 @@ public class DecoListCell extends HBox {
 
     public void setBkgOnFocus(boolean focusedPropety){
 
-        Background focusedBackground = new Background(new BackgroundFill(Color.WHITESMOKE, CornerRadii.EMPTY, Insets.EMPTY));
+        Background focusedBackground = new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY));
         if(focusedPropety){
             backgroundProperty().set(focusedBackground);
         }
