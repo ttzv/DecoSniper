@@ -6,7 +6,7 @@ public enum Config {
 
     private String sName;
 
-    Config(String sname){
+    Config(String sName){
         this.sName = sName;
     }
 }

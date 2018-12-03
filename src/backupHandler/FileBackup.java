@@ -21,9 +21,12 @@ public class FileBackup {
      */
     public FileBackup(Path srcFile, Path backupPath){
         this.backupPath = backupPath;
-        //this.pathSrc = "tests" + Utility.fileSeparator + "test" + Utility.fileSeparator + "t.txt";
         this.srcFile = srcFile;
         this.saveFile = new File(srcFile.toUri());
+    }
+
+    public FileBackup(){
+
     }
 
     /**

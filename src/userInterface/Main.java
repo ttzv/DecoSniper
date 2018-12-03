@@ -1,5 +1,8 @@
 package userInterface;
 
+import backupHandler.FileBackup;
+import configHandler.Config;
+import configHandler.ConfigHandler;
 import decos.Deco;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -20,6 +23,8 @@ import userInterface.dirPicker.SaveDetector;
 import userInterface.simulationOutput.SimOutputPane;
 import userInterface.statusBar.StatusBar;
 
+import java.io.IOException;
+
 
 public class Main extends Application{
 
@@ -37,20 +42,31 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        //Initialization of logic
         decoRecord = new DecoRecord();
 
+        //Initialization of configuration files and objects
+        ConfigHandler configHandler  = new ConfigHandler();
+        configHandler.firstRun();
+
+        //Initialization of backups function
+
         primaryStage.setTitle("DecoSniper");
-        //primaryStage.setResizable(false);
+
+        //GUI containers
         BorderPane borderPane = new BorderPane();
         VBox vBoxCenterPane = new VBox();
         vBoxCenterPane.setAlignment(Pos.CENTER);
         HBox hBoxSlots = new HBox();
         HBox hBoxAction = new HBox();
+
         SimOutputPane simOutputPane = new SimOutputPane(decoRecord);
+
         DecoListContainer decoListContainer = new DecoListContainer(decoRecord.getDecoList());
         decoListContainer.getStylesheets().add(Main.class.getResource("styleRecord.css").toExternalForm());
         borderPane.setRight(decoListContainer);
         BorderPane.setMargin(decoListContainer, new Insets(25, 25, 25, 25));
+
         vBoxCenterPane.getChildren().addAll(hBoxSlots, hBoxAction, simOutputPane);
         hBoxSlots.setAlignment(Pos.CENTER);
         hBoxAction.setAlignment(Pos.CENTER);
@@ -58,8 +74,10 @@ public class Main extends Application{
         hBoxSlots.setSpacing(10);
         hBoxSlots.setPadding(new Insets(25, 25, 25, 25));
         hBoxAction.setPadding(new Insets(0,0,25,0));
+
         Scene scene = new Scene(borderPane, 600, 300);
         scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
+
         ButtonRotation buttonRotation = new ButtonRotation(decoRecord);
 
         StatusBar statusBar = new StatusBar();
@@ -203,13 +221,15 @@ public class Main extends Application{
         });
         menuActions.getItems().addAll(menuActNew, menuActPrevious, menuActNext, menuActMeldLevel, menuActClear, menuSimulate);
         MenuItem menuSetSteamDir = new MenuItem("SteamID Dir");
+        SaveDetector saveDetector = new SaveDetector(primaryStage);
         menuSetSteamDir.setOnAction(event -> {
-            SaveDetector saveDetector = new SaveDetector(primaryStage);
             saveDetector.show();
-            saveDetector.getGameSaveDir();
         });
 
         MenuItem menuOptLoad = new MenuItem("Load");
+        menuOptLoad.setOnAction(event -> {
+
+        });
         MenuItem menuOptRecord = new MenuItem("Record");
         menuOptRecord.setOnAction(event -> {
             /*if(DecoListContainer.isVisible()){
@@ -224,13 +244,21 @@ public class Main extends Application{
 
         borderPane.setTop(menuBar);
 
-
-
         primaryStage.setScene(scene);
 
         primaryStage.show();
+        primaryStage.setOnCloseRequest(event -> {
 
+            if(saveDetector.getGameSaveDir() != null){
+                configHandler.setCustomProperty(Config.SteamIdDir.toString(),saveDetector.getGameSaveDir().toString());
+            }
 
+            try {
+                configHandler.saveCustomProperties();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
 
     }
 

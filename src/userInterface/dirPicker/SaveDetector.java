@@ -13,6 +13,7 @@ public class SaveDetector {
     private File steamIdDir;
     private Stage primaryStage;
     private Path gameSaveDir;
+    private boolean dirSet = false;
 
 
     public SaveDetector(Stage primaryStage) {
@@ -21,13 +22,14 @@ public class SaveDetector {
         directoryChooser  = new DirectoryChooser();
         directoryChooser.setTitle("Path to SteamID folder");
 
-        this.gameSaveDir = FileSystems.getDefault().getPath("582010", "SAVEDATA1000");
+        this.gameSaveDir = FileSystems.getDefault().getPath("582010", "remote", "SAVEDATA1000");
         System.out.println(gameSaveDir);
 
     }
 
     public void show(){
         steamIdDir = directoryChooser.showDialog(primaryStage);
+        dirSet = true;
     }
 
     private File getSteamIdDir(){
@@ -39,15 +41,20 @@ public class SaveDetector {
      * @return true if savefile exists, otherwise false;
      */
     private boolean savePathResolve(){
-        Path providedPath = getSteamIdDir().toPath();
-        System.out.println(providedPath);
-        gameSaveDir = providedPath.resolve(gameSaveDir);
-        System.out.println(gameSaveDir);
-        File saveFile = new File (gameSaveDir.toUri());
-        if(saveFile.exists())
-            return true;
-        else
+        if(dirSet) {
+            Path providedPath = getSteamIdDir().toPath();
+            System.out.println(providedPath);
+            gameSaveDir = providedPath.resolve(gameSaveDir);
+            System.out.println(gameSaveDir);
+            File saveFile = new File(gameSaveDir.toUri());
+            if (saveFile.exists())
+                return true;
+            else
+                return false;
+        } else {
             return false;
+        }
+
     }
 
     public Path getGameSaveDir() {
