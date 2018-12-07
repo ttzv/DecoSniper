@@ -2,7 +2,8 @@ package configHandler;
 
 public enum Config {
 
-    SteamIdDir("SteamIdDir");
+    SteamIdDir("SteamIdDir"),
+    BackupDir("BackupDir");
 
     private String sName;
 

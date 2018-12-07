@@ -1,6 +1,8 @@
 package configHandler;
 
 
+import backupHandler.FileBackup;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -15,8 +17,10 @@ public class ConfigHandler {
     private Properties properties;
     private Properties defProps;
 
+    private FileBackup fileBackup;
+
     /**
-     * Creates ConfigHandler object, defines default path of storing config, prepares File objects for storings properties
+     * Creates ConfigHandler object, defines default path of storing config, prepares File objects for storing properties
      */
     public ConfigHandler(){
 
@@ -29,6 +33,8 @@ public class ConfigHandler {
 
         this.defProps = new Properties();
         this.properties = new Properties();
+
+        this.fileBackup = fileBackup;
     }
 
 
@@ -61,7 +67,8 @@ public class ConfigHandler {
      * @param properties
      */
     private void useProperties(Properties properties) {
-
+        if(properties.containsKey(Config.SteamIdDir.toString())){
+        }
     }
 
     /**

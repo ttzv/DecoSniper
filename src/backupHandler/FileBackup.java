@@ -1,7 +1,5 @@
 package backupHandler;
 
-import utility.Utility;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
@@ -11,29 +9,29 @@ public class FileBackup {
 
     private File saveFile;
 
-    private Path srcFile;
+    private Path srcPath;
     private Path backupPath;
 
     /**
      * Creates new object responsible for making backups of given file in given directory
-     * @param srcFile file to backup
-     * @param backupPath directory for saving backups
      */
-    public FileBackup(Path srcFile, Path backupPath){
-        this.backupPath = backupPath;
-        this.srcFile = srcFile;
-        this.saveFile = new File(srcFile.toUri());
-    }
-
     public FileBackup(){
-
+        this.backupPath = null;
+        this.srcPath = null;
+        this.saveFile = null;
     }
+
 
     /**
-     * Creates new backup of file given in FileBackup constructor, backup is located in directory also given in constructor
+     * Creates new backup of file given in srcPath field, backup is located in directory given in backupPath field
      * Backups are stored in folders named with date of their creation
+     * Before using this method set source and target paths using setters
      */
     public void backup(){
+
+        if(this.srcPath == null || this.backupPath == null){
+            throw new NullPointerException("SourcePath or BackupPath not set");
+        }
 
         backupPath = backupPath.resolve(cDate());
 
@@ -43,7 +41,7 @@ public class FileBackup {
 
         if(target.mkdir()) {
             try {
-                Files.copy(srcFile, backupPath.resolve(srcFile.getFileName()));
+                Files.copy(srcPath, backupPath.resolve(srcPath.getFileName()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -67,4 +65,12 @@ public class FileBackup {
         return cDate;
     }
 
+    public void setSrcPath(Path srcPath) {
+        this.srcPath = srcPath;
+        this.saveFile = new File(srcPath.toUri());
+    }
+
+    public void setBackupPath(Path backupPath) {
+        this.backupPath = backupPath;
+    }
 }

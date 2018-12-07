@@ -24,6 +24,7 @@ import userInterface.simulationOutput.SimOutputPane;
 import userInterface.statusBar.StatusBar;
 
 import java.io.IOException;
+import java.nio.file.Path;
 
 
 public class Main extends Application{
@@ -35,6 +36,11 @@ public class Main extends Application{
     private Button button_3;
     private DecoRecord decoRecord;
 
+   /* //Backup configuration fields
+    private final Path srcPath;
+    private final Path bkpPath;
+    */
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -45,12 +51,12 @@ public class Main extends Application{
         //Initialization of logic
         decoRecord = new DecoRecord();
 
+        //Initialization of backups function
+        FileBackup fileBackup = new FileBackup();
+
         //Initialization of configuration files and objects
         ConfigHandler configHandler  = new ConfigHandler();
         configHandler.firstRun();
-
-        //Initialization of backups function
-
         primaryStage.setTitle("DecoSniper");
 
         //GUI containers
@@ -224,6 +230,7 @@ public class Main extends Application{
         SaveDetector saveDetector = new SaveDetector(primaryStage);
         menuSetSteamDir.setOnAction(event -> {
             saveDetector.show();
+            fileBackup.setSrcPath(saveDetector.getGameSaveDir());
         });
 
         MenuItem menuOptLoad = new MenuItem("Load");
