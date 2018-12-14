@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: --add-modules=javafx.graphics,javafx.controls,javafx.base
+Main-Class: userInterface.Main
+

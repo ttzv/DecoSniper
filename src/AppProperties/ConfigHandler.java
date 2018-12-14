@@ -1,4 +1,4 @@
-package configHandler;
+package AppProperties;
 
 
 import backupHandler.FileBackup;
@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+@Deprecated
 public class ConfigHandler {
 
     private File cfgFile;

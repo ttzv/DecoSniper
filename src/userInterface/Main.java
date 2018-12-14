@@ -1,8 +1,6 @@
 package userInterface;
 
 import backupHandler.FileBackup;
-import configHandler.Config;
-import configHandler.ConfigHandler;
 import decos.Deco;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -22,9 +20,6 @@ import userInterface.decoListPanes.DecoListContainer;
 import userInterface.dirPicker.SaveDetector;
 import userInterface.simulationOutput.SimOutputPane;
 import userInterface.statusBar.StatusBar;
-
-import java.io.IOException;
-import java.nio.file.Path;
 
 
 public class Main extends Application{
@@ -55,8 +50,6 @@ public class Main extends Application{
         FileBackup fileBackup = new FileBackup();
 
         //Initialization of configuration files and objects
-        ConfigHandler configHandler  = new ConfigHandler();
-        configHandler.firstRun();
         primaryStage.setTitle("DecoSniper");
 
         //GUI containers
@@ -254,18 +247,8 @@ public class Main extends Application{
         primaryStage.setScene(scene);
 
         primaryStage.show();
-        primaryStage.setOnCloseRequest(event -> {
 
-            if(saveDetector.getGameSaveDir() != null){
-                configHandler.setCustomProperty(Config.SteamIdDir.toString(),saveDetector.getGameSaveDir().toString());
-            }
-
-            try {
-                configHandler.saveCustomProperties();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+        //primaryStage.setOnCloseRequest();
 
     }
 
