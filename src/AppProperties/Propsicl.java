@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Calendar;
 import java.util.Properties;
 
 /**
@@ -31,10 +32,15 @@ public class Propsicl {
     private Path propsPath;
     private String defPropsName;
     private String mainPropsName;
+    private boolean writeProt;
 
     public Propsicl(){
 
+        /**
+         * readonly default properties field
+         */
         defaultProps = new Properties();
+        writeProt = true;
         propsPath = FileSystems.getDefault().getPath("cfg");
 
         defPropsName = "default.props";
@@ -91,15 +97,21 @@ public class Propsicl {
     }
 
     public void loadProperties(Properties properties, Path path) throws IOException {
-        properties.load(new FileInputStream(path.toFile()));
+        FileInputStream fis = new FileInputStream(path.toFile());
+        properties.load(fis);
+        fis.close();
     }
 
     public void saveProperties(Properties properties, Path path) throws IOException{
-        properties.store(new FileOutputStream(path.toFile()), this.getClass().toString());
+        FileOutputStream fos = new FileOutputStream(path.toFile());
+        properties.store(fos, this.getClass().toString());
+        fos.close();
     }
 
     public void saveProperties(Properties properties, Path path, String comment) throws IOException{
-        properties.store(new FileOutputStream(path.toFile()), comment);
+        FileOutputStream fos = new FileOutputStream(path.toFile());
+        properties.store(fos, comment);
+        fos.close();
     }
 
     public void contentCheck(){
@@ -123,6 +135,7 @@ public class Propsicl {
         //compare and decide which to operate on
         if( placeholder.keySet().size() < defaultProps.keySet().size()){
             this.props = new Properties(defaultProps);
+
         } else {
             this.props = new Properties(placeholder);
         }
@@ -132,21 +145,35 @@ public class Propsicl {
         }
     }
 
-    public String retrieveProp(String key){
-        props.getProperty(key);
+
+
+    /**
+     * Retrieve property stored under given key in currently loaded properties, depending on whether main propserties was found, otherwise returned property comes from default predefined properties.
+     * If key is not found a PropsNullException is thrown.
+     * @param key String value of key identificator, for ease of use apply static fields of Pdef class here
+     * @return String value of property stored under given key.
+     */
+    public String retrieveProp(String key) throws PropsNullException{
+        if(props.containsKey(key)){
+            return props.getProperty(key);
+        } else {
+            throw new PropsNullException();
+        }
     }
 
+    /**
+     * Saves any modification of properties in
+     * @throws IOException
+     */
+    public void save() throws IOException {
+        if(writeProt) {
+            Calendar calendar = Calendar.getInstance();
+            saveProperties(props, propsPath, "Date of saving " + calendar.getTime().toString());
+        } else {
+            System.out.println("Defaults ");
+            throw new IOException();
+        }
 
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 }
