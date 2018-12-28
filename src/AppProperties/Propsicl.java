@@ -90,8 +90,11 @@ public abstract class Propsicl {
 
     /**
      * Method used for defining default properties. Override this method at the start of application when object extending propsicl is created but before <i>init()</i> method.
-     * To define property use <pre>
-     * @code
+     * To define property use:
+     * <pre>
+     * <code>
+     * defPropSet( K, V );
+     * </code>
      * </pre>
      */
     public abstract void defaultPropsVals();/*{
@@ -201,7 +204,7 @@ public abstract class Propsicl {
     }
 
     /**
-     * Method that encapsulates creating directories, files, initialization of properties etc, use at the start of application.
+     * Method encapsulating creation of directories, files, initialization of properties etc, use at the start of application or module.
      * @throws IOException
      */
     public void init() throws IOException {
