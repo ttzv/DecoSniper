@@ -13,6 +13,8 @@ import java.util.Properties;
 /**
  * Class Propsicl - short for Properties Init-Config-Load
  * Multipurpose class used for tasks related to properties
+ * To use this you should create your own class responsible for properties that extends Propsicl.
+ * Then override method defaultPropsVals() if you need default properties in your project.
  *  */
 public abstract class Propsicl {
 
@@ -22,7 +24,7 @@ public abstract class Propsicl {
     private Properties defaultProps;
 
     /**
-     * field with properties used during program work, can store and load form this
+     * field with properties used during runtime, can store and load from this
      */
     private Properties props;
 
