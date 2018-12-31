@@ -15,6 +15,8 @@ import java.util.Properties;
  * Multipurpose class used for tasks related to properties
  * To use this you should create your own class responsible for properties that extends Propsicl.
  * Then override method defaultPropsVals() if you need default properties in your project.
+ * You can create multiple different properties for different classes and modules in your program, properties are named after class inheriting Propsicl with "_def" or "_main" added.
+ *
  *  */
 public abstract class Propsicl {
 
@@ -44,8 +46,8 @@ public abstract class Propsicl {
         defaultProps = new Properties();
         propsPath = FileSystems.getDefault().getPath("cfg");
 
-        defPropsName = "default.props";
-        mainPropsName = "main.props";
+        defPropsName = this.getClass().getSimpleName() + "_def.props";
+        mainPropsName = this.getClass().getSimpleName() + "_main.props";
 
     }
 
@@ -149,7 +151,7 @@ public abstract class Propsicl {
 
 
     /**
-     * Loads defaults form default.props file and main props from main.props file, initializes main properties object with defaults list and populates it with vaules red from main.props.
+     * Loads defaults form default.props file and main props from main.props file, initializes main properties object with defaults list and populates it with values red from main.props.
      */
     private void create(){
         //load from default props file and store in default object
@@ -167,9 +169,8 @@ public abstract class Propsicl {
             io.printStackTrace();
         }
 
-        System.out.println("Default properties loaded: " + defaultProps.keySet().size());
-        System.out.println("Properties loaded: " + props.keySet().size());
-
+        System.out.println(getClass().getSimpleName() + ": Default properties loaded: " + defaultProps.keySet().size());
+        System.out.println(getClass().getSimpleName() + ": Properties loaded: " + props.keySet().size());
 
         modifiable = true;
     }
@@ -206,7 +207,7 @@ public abstract class Propsicl {
     }
 
     /**
-     * Method encapsulating creation of directories, files, initialization of properties etc, use at the start of application or module.
+     * Method encapsulating creation of directories, files, initialization of properties etc, use at the start of application or module/class(constructor preferably).
      * @throws IOException
      */
     public void init() throws IOException {
@@ -218,7 +219,7 @@ public abstract class Propsicl {
         //put something in defaults and save it
         this.defaultPropsVals();
         this.saveDefaultProps();
-        //load form files and create objects
+        //load from filesystem and create objects
         this.create();
     }
 
