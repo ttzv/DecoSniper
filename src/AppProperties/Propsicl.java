@@ -99,6 +99,7 @@ public abstract class Propsicl {
      * <code>
      * defPropSet( K, V );
      * </code>
+     * K, V - string values/objects
      * </pre>
      */
     public abstract void defaultPropsVals();/*{

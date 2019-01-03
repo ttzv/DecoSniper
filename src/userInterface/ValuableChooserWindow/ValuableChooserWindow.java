@@ -19,9 +19,12 @@ import java.util.ArrayList;
 public class ValuableChooserWindow {
 
     private DesiredDecos desiredDecos;
+    private Scene scene;
+    private Scene scenePrev;
     private Stage stage;
     private Button btnAdd;
     private Button btnDel;
+    private Button btnApply;
     private ListView<Deco> sourceListView;
     private ListView<Deco> targetListView;
     private ObservableList<Deco> srcList;
@@ -31,21 +34,27 @@ public class ValuableChooserWindow {
 
     public ValuableChooserWindow(DesiredDecos desiredDecos){
         insets = new Insets(10, 10, 10, 10);
-        this.stage = new Stage();
         sourceListView = new ListView<>();
         targetListView = new ListView<>();
         this.desiredDecos = desiredDecos;
     }
 
-    public Stage getStage() {
+    public Scene getScene() {
+        build();
+        return scene;
+    }
+
+    public Stage getStage(){
         build();
         return stage;
     }
 
     public void build(){
         HBox region = new HBox();
-        Scene scene = new Scene(region, 600, 300);
-        stage.setScene(scene);
+        this.scene = new Scene(region, 600, 300);
+        //optional
+
+        //optional
         region.setAlignment(Pos.CENTER);
         HBox.setMargin(sourceListView, insets);
         HBox.setMargin(targetListView, insets);
@@ -55,8 +64,9 @@ public class ValuableChooserWindow {
         btnAdd.setPrefSize(25, 25);
         btnDel = new Button("-");
         btnDel.setPrefSize(25, 25);
+        btnApply = new Button("OK");
         vBoxChooseButtons.setSpacing(5);
-        vBoxChooseButtons.getChildren().addAll(btnAdd, btnDel);
+        vBoxChooseButtons.getChildren().addAll(btnAdd, btnDel, btnApply);
         vBoxChooseButtons.setAlignment(Pos.CENTER);
 
         srcList = createList(Deco.getDecosList());
@@ -128,6 +138,28 @@ public class ValuableChooserWindow {
 
             desiredDecos.setDesiredDecoList(Deco.listDecoToId(new ArrayList<>(targetList)));
         });
+
+        this.btnApply.setOnAction(event -> {
+            this.changeScene(scenePrev);
+        });
+
+    }
+
+    /**
+     * Change active scene to given in parameter
+     * @param changeTo
+     */
+    public void changeScene(Scene changeTo){
+            Stage stage = (Stage) changeTo.getWindow();
+            stage.setScene(changeTo);
+    }
+
+    /**
+     * Set returning point for this scene
+     * @param scenePrev - scene to return to when method changeScene is called
+     */
+    public void setScenePrev(Scene scenePrev){
+        this.scenePrev = scenePrev;
     }
 
 }

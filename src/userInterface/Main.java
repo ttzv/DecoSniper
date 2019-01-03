@@ -84,11 +84,14 @@ public class Main extends Application{
 
         DesiredDecos desiredDecos = new DesiredDecos(decoRecord.getDecoList());
 
+        //Initialize VCW window object. You can change
         ValuableChooserWindow VCW = new ValuableChooserWindow(desiredDecos);
+        //set returning point when leaving VCW scene
+        VCW.setScenePrev(scene);
         VBox vBoxLeftPaneButtons = new VBox();
         Button btnShowValStage = new Button("Valuables...");
         btnShowValStage.setOnAction(event -> {
-            VCW.getStage().show();
+            primaryStage.setScene(VCW.getScene());
         });
         vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage);
         borderPane.setLeft(vBoxLeftPaneButtons);
