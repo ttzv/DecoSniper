@@ -44,6 +44,7 @@ public class ValuableChooserWindow {
         return scene;
     }
 
+    // optionally can use this to show in new window
     public Stage getStage(){
         build();
         return stage;
@@ -53,7 +54,8 @@ public class ValuableChooserWindow {
         HBox region = new HBox();
         this.scene = new Scene(region, 600, 300);
         //optional
-
+        this.stage = new Stage();
+        this.stage.setScene(scene);
         //optional
         region.setAlignment(Pos.CENTER);
         HBox.setMargin(sourceListView, insets);
@@ -147,11 +149,15 @@ public class ValuableChooserWindow {
 
     /**
      * Change active scene to given in parameter
-     * @param changeTo
+     * @param changeTo scene to change to
      */
     public void changeScene(Scene changeTo){
-            Stage stage = (Stage) changeTo.getWindow();
+        Stage stage = (Stage)this.scene.getWindow();
+        if(stage != null){
             stage.setScene(changeTo);
+        } else {
+            throw new NullPointerException("Returning Scene not set");
+        }
     }
 
     /**
