@@ -71,7 +71,7 @@ public class DecoRecord {
 
     /**
      *
-     * @return true if propertz was correctlz modified, otherwise false
+     * @return true if property was correctly modified, otherwise false
      */
 
     public boolean focusedSetPropertyIncrement(){
@@ -98,8 +98,6 @@ public class DecoRecord {
     }
 
     /**
-     *
-     *
      * @return Currently focused set of decorations that is visible in GUI in ArrayList format
      *
      */

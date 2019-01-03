@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import logic.decoRecord.DecoRecord;
 import logic.questsCounter.DesiredDecos;
-import userInterface.ValuableChooserWindow.ValuableChooserWindow;
+import userInterface.scene.valuables.ValuablesWindow;
 import userInterface.decoListPanes.DecoListView;
 import userInterface.buttons.ButtonRotation;
 import userInterface.decoListPanes.DecoListContainer;
@@ -84,14 +84,15 @@ public class Main extends Application{
 
         DesiredDecos desiredDecos = new DesiredDecos(decoRecord.getDecoList());
 
-        //Initialize VCW window object. You can change
-        ValuableChooserWindow VCW = new ValuableChooserWindow(desiredDecos);
+        //Initialize VCW window object. getScene to remain in the same window, getStage to show in new window
+        ValuablesWindow VCW = new ValuablesWindow(desiredDecos);
         //set returning point when leaving VCW scene
         VCW.setScenePrev(scene);
         VBox vBoxLeftPaneButtons = new VBox();
         Button btnShowValStage = new Button("Valuables...");
         btnShowValStage.setOnAction(event -> {
             primaryStage.setScene(VCW.getScene());
+            //VCW.getStage().show(); UNUSED
         });
         vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage);
         borderPane.setLeft(vBoxLeftPaneButtons);
@@ -218,6 +219,7 @@ public class Main extends Application{
             simOutputPane.clear();
             decoRecord.clearAll();
             decoRecord.nextSet();
+            desiredDecos.clear();
             clearSlots();
             decoListContainer.updateRecord();
         });

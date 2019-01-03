@@ -53,4 +53,8 @@ public class DesiredDecos {
     public ArrayList<Integer> getDesiredDecoList() {
         return desiredDecoList;
     }
+
+    public void clear(){
+        this.desiredDecoPlacesMap.clear();
+    }
 }

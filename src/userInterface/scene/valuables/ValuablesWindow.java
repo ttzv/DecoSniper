@@ -1,4 +1,4 @@
-package userInterface.ValuableChooserWindow;
+package userInterface.scene.valuables;
 
 import decos.Deco;
 import javafx.collections.FXCollections;
@@ -16,7 +16,7 @@ import logic.questsCounter.DesiredDecos;
 import java.util.ArrayList;
 
 
-public class ValuableChooserWindow {
+public class ValuablesWindow {
 
     private DesiredDecos desiredDecos;
     private Scene scene;
@@ -32,7 +32,7 @@ public class ValuableChooserWindow {
     private Insets insets;
 
 
-    public ValuableChooserWindow(DesiredDecos desiredDecos){
+    public ValuablesWindow(DesiredDecos desiredDecos){
         insets = new Insets(10, 10, 10, 10);
         sourceListView = new ListView<>();
         targetListView = new ListView<>();
@@ -50,7 +50,7 @@ public class ValuableChooserWindow {
         return stage;
     }
 
-    public void build(){
+    private void build(){
         HBox region = new HBox();
         this.scene = new Scene(region, 600, 300);
         //optional
@@ -92,7 +92,7 @@ public class ValuableChooserWindow {
      * @param initList list containing items to populate new observablelist with.
      * @return new non-empty ObservableList
      */
-    public ObservableList<Deco> createList (ArrayList<Deco> initList){
+    private ObservableList<Deco> createList(ArrayList<Deco> initList){
         ObservableList<Deco> observableList = FXCollections.observableArrayList();
         observableList.addAll(initList);
 
@@ -103,14 +103,14 @@ public class ValuableChooserWindow {
      * Creates new unpopulated Observablelist
      * @return new empty ObservableList
      */
-    public ObservableList<Deco> createList (){
+    private ObservableList<Deco> createList(){
         ObservableList<Deco> observableList = FXCollections.observableArrayList();
 
         return observableList;
     }
 
 
-    public void moveItem(Deco item, ObservableList<Deco> source, ObservableList<Deco> target){
+    private void moveItem(Deco item, ObservableList<Deco> source, ObservableList<Deco> target){
         if(source.contains(item)){
             target.add(item);
             source.remove(item);
@@ -120,7 +120,7 @@ public class ValuableChooserWindow {
         }
     }
 
-    public void addHandlers(){
+    private void addHandlers(){
         this.btnAdd.setOnAction(event -> {
             Deco item = this.sourceListView.getSelectionModel().getSelectedItem();
             System.out.println(item);
@@ -151,7 +151,7 @@ public class ValuableChooserWindow {
      * Change active scene to given in parameter
      * @param changeTo scene to change to
      */
-    public void changeScene(Scene changeTo){
+    private void changeScene(Scene changeTo){
         Stage stage = (Stage)this.scene.getWindow();
         if(stage != null){
             stage.setScene(changeTo);
