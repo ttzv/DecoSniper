@@ -14,7 +14,7 @@ public class DecoRecord {
     private int observedSet = 1;
     private int focusedSet = 0;
     /**
-     * Variable containing information about place of rotation (1-1-2).*
+     * Variable containing information about place of rotation (1-1-2).
      * 1 - first place (default)
      * 2 - second place
      * 3 - third place
