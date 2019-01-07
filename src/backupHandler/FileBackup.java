@@ -34,15 +34,15 @@ public class FileBackup {
             throw new NullPointerException("SourcePath or BackupPath not set");
         }
 
-        backupPath = backupPath.resolve(cDate());
+        Path bak =  backupPath.resolve(cDate());
 
-        System.out.println(backupPath);
+        System.out.println(bak);
 
-        Files.createDirectory(backupPath);
+        Files.createDirectories(bak);
 
-        if(Files.exists(backupPath)) {
+        if(Files.exists(bak)) {
             try {
-                Files.copy(srcPath, backupPath.resolve(srcPath.getFileName()));
+                Files.copy(srcPath, bak.resolve(srcPath.getFileName()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -57,7 +57,7 @@ public class FileBackup {
 
         Calendar date = Calendar.getInstance();
         String cDate = "" + date.get(Calendar.DAY_OF_MONTH) + "-" +
-                date.get(Calendar.MONTH) + "-" +
+                date.get(Calendar.MONTH) + 1 + "-" +
                 date.get(Calendar.YEAR) + "_" +
                 date.get(Calendar.HOUR) + "-" +
                 date.get(Calendar.MINUTE) + "-" +

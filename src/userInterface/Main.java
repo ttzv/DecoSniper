@@ -17,8 +17,9 @@ import userInterface.scene.valuables.ValuablesWindow;
 import userInterface.decoListPanes.DecoListView;
 import userInterface.buttons.ButtonRotation;
 import userInterface.decoListPanes.DecoListContainer;
-import userInterface.dirPicker.SaveDetector;
+import userInterface.stages.steamDir.SaveDetector;
 import userInterface.simulationOutput.SimOutputPane;
+import userInterface.stages.steamDir.OptionsWindow;
 import userInterface.statusBar.StatusBar;
 
 
@@ -231,11 +232,14 @@ public class Main extends Application{
             decoListContainer.updateRecord();
         });
         menuActions.getItems().addAll(menuActNew, menuActPrevious, menuActNext, menuActMeldLevel, menuActClear, menuSimulate);
-        MenuItem menuSetSteamDir = new MenuItem("SteamID Dir");
-        SaveDetector saveDetector = new SaveDetector(primaryStage);
-        menuSetSteamDir.setOnAction(event -> {
-            saveDetector.show();
-            fileBackup.setSrcPath(saveDetector.getGameSaveDir());
+        MenuItem menuSteamLoc = new MenuItem("Steam Location");
+        OptionsWindow optionsWindow = new OptionsWindow();
+        optionsWindow.build();
+        menuSteamLoc.setOnAction(event -> {
+
+            optionsWindow.getStage().show();
+            //saveDetector.show();
+            //fileBackup.setSrcPath(saveDetector.getGameSaveDir());
         });
 
         MenuItem menuOptLoad = new MenuItem("Load");
@@ -252,7 +256,7 @@ public class Main extends Application{
             }*/
             decoListContainer.setVvalue(1.0);
         });
-        menuOptions.getItems().addAll(menuOptLoad, menuSetSteamDir, menuOptRecord);
+        menuOptions.getItems().addAll(menuOptLoad, menuSteamLoc, menuOptRecord);
 
         borderPane.setTop(menuBar);
 

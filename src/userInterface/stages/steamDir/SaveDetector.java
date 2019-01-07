@@ -1,10 +1,11 @@
-package userInterface.dirPicker;
+package userInterface.stages.steamDir;
 
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class SaveDetector {
@@ -46,11 +47,8 @@ public class SaveDetector {
             System.out.println(providedPath);
             gameSaveDir = providedPath.resolve(gameSaveDir);
             System.out.println(gameSaveDir);
-            File saveFile = new File(gameSaveDir.toUri());
-            if (saveFile.exists())
-                return true;
-            else
-                return false;
+            //return true if file exists
+            return Files.exists(gameSaveDir);
         } else {
             return false;
         }
