@@ -3,6 +3,7 @@ package logic.questsCounter;
 import decos.Deco;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 
 /**
@@ -38,7 +39,7 @@ public class DesiredDecos {
                     }
                 }
             }
-
+            this.desiredDecoPlacesMap.
             return this.desiredDecoPlacesMap;
         }else{
             throw new NullPointerException("no items in desired, set some first");

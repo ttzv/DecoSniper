@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import logic.questsCounter.DesiredDecos;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class ValuablesWindow {
@@ -40,17 +41,22 @@ public class ValuablesWindow {
     }
 
     public Scene getScene() {
-        build();
+        //build(); //removed build form getter to prevent building scene from scratch everytime its shown
+        sortList(sourceListView);
+        sortList(targetListView);
         return scene;
     }
 
     // optionally can use this to show in new window
     public Stage getStage(){
-        build();
+        //build(); //removed build form getter to prevent building scene form scratch everytime its shown
         return stage;
     }
 
-    private void build(){
+    /**
+     * Method used to build whole scene, use after initializing new object. Afterwards you can use getter.
+     */
+    public void build(){
         HBox region = new HBox();
         this.scene = new Scene(region, 600, 300);
         //optional
@@ -112,8 +118,8 @@ public class ValuablesWindow {
 
     private void moveItem(Deco item, ObservableList<Deco> source, ObservableList<Deco> target){
         if(source.contains(item)){
-            target.add(item);
             source.remove(item);
+            target.add(item);
         }
         else {
             System.out.println("Item " + item + " does not exist in source list");
@@ -166,6 +172,10 @@ public class ValuablesWindow {
      */
     public void setScenePrev(Scene scenePrev){
         this.scenePrev = scenePrev;
+    }
+
+    private void sortList(ListView listView){
+        Collections.sort(listView.getItems());
     }
 
 }

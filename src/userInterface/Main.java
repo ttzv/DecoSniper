@@ -88,13 +88,20 @@ public class Main extends Application{
         ValuablesWindow VCW = new ValuablesWindow(desiredDecos);
         //set returning point when leaving VCW scene
         VCW.setScenePrev(scene);
+        VCW.build();
         VBox vBoxLeftPaneButtons = new VBox();
         Button btnShowValStage = new Button("Valuables...");
         btnShowValStage.setOnAction(event -> {
             primaryStage.setScene(VCW.getScene());
             //VCW.getStage().show(); UNUSED
         });
-        vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage);
+
+        Button btnSimulate = new Button("Simulate");
+        btnSimulate.setOnAction(event -> {
+            System.out.println(desiredDecos.getValuableDecosMap());
+            simOutputPane.updateSimInfo(desiredDecos);
+        });
+        vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage, btnSimulate);
         borderPane.setLeft(vBoxLeftPaneButtons);
 
         button_1 = new Button("1");
