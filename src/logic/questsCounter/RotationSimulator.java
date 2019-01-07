@@ -1,9 +1,6 @@
 package logic.questsCounter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 /**
  * Calculates amount of quests that need to be completed before next meld.
@@ -13,7 +10,7 @@ import java.util.LinkedHashMap;
 public class RotationSimulator {
 
 
-    private LinkedHashMap<Integer, Integer> desiredDecoPlacesMap;
+    private Map<Integer, Integer> desiredDecoPlacesMap;
     private ArrayList<Integer> decoKeySet;
     private int currentRotation;
     private int rotationStatus;
@@ -21,7 +18,7 @@ public class RotationSimulator {
     private int remainingMelds;
     private int observedSet;
 
-    public RotationSimulator(LinkedHashMap<Integer, Integer> desiredDecoPlacesMap, int rotationStatus){
+    public RotationSimulator(Map<Integer, Integer> desiredDecoPlacesMap, int rotationStatus){
         this.desiredDecoPlacesMap = desiredDecoPlacesMap;
         decoKeySet = new ArrayList<>(desiredDecoPlacesMap.keySet());
         this.rotationStatus = rotationStatus;

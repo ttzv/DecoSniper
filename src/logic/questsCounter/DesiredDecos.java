@@ -5,6 +5,7 @@ import decos.Deco;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.TreeMap;
 
 /**
  * Class used for determining which decos we are hunting for.
@@ -17,11 +18,11 @@ public class DesiredDecos {
 
     private ArrayList<ArrayList<Integer>> decoList; //main decoList
     private ArrayList<Integer> desiredDecoList; //list with desired decos. changeable. at start default values are loaded.
-    private LinkedHashMap<Integer, Integer> desiredDecoPlacesMap; //map with places of found desired decos;
+    private TreeMap<Integer, Integer> desiredDecoPlacesMap; //map with places of found desired decos;
 
     public DesiredDecos(ArrayList<ArrayList<Integer>> decoList) {
         this.decoList = decoList;
-        desiredDecoPlacesMap = new LinkedHashMap<>();
+        desiredDecoPlacesMap = new TreeMap<>();
     }
 
     /**
@@ -29,7 +30,8 @@ public class DesiredDecos {
      *
      * @return Map with places of desired decos.
      */
-    public LinkedHashMap getValuableDecosMap(){
+    public TreeMap getValuableDecosMap(){
+        this.desiredDecoPlacesMap.clear();
         if(desiredDecoList != null) {
             for (Integer dDeco : desiredDecoList) {
                 for (int set = 0; set < decoList.size(); set++) {
@@ -39,7 +41,6 @@ public class DesiredDecos {
                     }
                 }
             }
-            this.desiredDecoPlacesMap.
             return this.desiredDecoPlacesMap;
         }else{
             throw new NullPointerException("no items in desired, set some first");
