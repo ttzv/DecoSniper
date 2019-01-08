@@ -180,13 +180,19 @@ public abstract class Propsicl {
 
     /**
      * Retrieve property stored under given key in currently loaded properties, depending on whether main properties was found, otherwise returned property comes from default predefined properties.
-     * If key is not found NULL is returned
+     * If key is not found empty string is returned
      * @param key String value of key identificator, for ease of use apply static fields of Pdef class here
-     * @return String value of property stored under given key or NULL if key was not found
+     * @return String value of property stored under given key or empty string if key was not found
      */
     public String retrieveProp(String key){
+        String val = props.getProperty(key);
 
-        return props.getProperty(key);
+        if(val == null){
+            return "";
+        } else {
+            return val;
+        }
+
 
     }
 

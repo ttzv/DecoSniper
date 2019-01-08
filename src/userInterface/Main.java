@@ -17,7 +17,6 @@ import userInterface.scene.valuables.ValuablesWindow;
 import userInterface.decoListPanes.DecoListView;
 import userInterface.buttons.ButtonRotation;
 import userInterface.decoListPanes.DecoListContainer;
-import userInterface.stages.steamDir.SaveDetector;
 import userInterface.simulationOutput.SimOutputPane;
 import userInterface.stages.steamDir.OptionsWindow;
 import userInterface.statusBar.StatusBar;

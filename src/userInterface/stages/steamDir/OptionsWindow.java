@@ -26,8 +26,21 @@ public class OptionsWindow {
 
     private FileBackup fileBackup;
 
+    private Path saveDir;
+
+
+
     public OptionsWindow(){
+        stage = new Stage();
         fileBackup = new FileBackup();
+        saveDetector = new SaveDetector(stage);
+
+        saveDir = saveDetector.getGameSaveDirProp();
+        if(saveDir != null){
+            fileBackup.setSrcPath(saveDir);
+        }
+
+        fileBackup.setBackupPath(Utility.defBakPath);
     }
 
     public Stage getStage(){
@@ -35,7 +48,6 @@ public class OptionsWindow {
     }
 
     public void build(){
-        stage = new Stage();
         layout = new VBox();
         layout.setSpacing(5);
         layout.setPadding(new Insets(15, 15, 15, 15));
@@ -43,33 +55,39 @@ public class OptionsWindow {
         stage.setScene(scene);
 
         dirLabel = new Label("Empty");
+
         statusLabel = new Label("Not detected");
 
         btnChange = new Button("Change...");
-        addbtnChangeHandler();
+        addBtnChangeHandler();
 
         btnBackup = new Button("Backup savefile");
         btnBackup.disableProperty().setValue(true);
+        if(saveDir != null) {
+            dirLabel.setText(saveDir.toString());
+            changeStatus(true);
+        }else{
+            changeStatus(false);
+        }
         addBtnBackupHandler();
 
         layout.getChildren().addAll(dirLabel, btnChange, statusLabel, btnBackup);
 
-        saveDetector = new SaveDetector(stage);
+
     }
 
     private void setDirString(String s){
         this.dirLabel.setText(s);
     }
 
-    private void addbtnChangeHandler(){
+    private void addBtnChangeHandler(){
         this.btnChange.setOnAction(event -> {
             saveDetector.show();
-            if(saveDetector.getGameSaveDir() != null) {
-                Path saveDir = saveDetector.getGameSaveDir();
+            Path saveDir = saveDetector.getGameSaveDir();
+            if(saveDir != null) {
                 setDirString(saveDir.toString());
                 changeStatus(true);
                 fileBackup.setSrcPath(saveDir);
-                fileBackup.setBackupPath(Utility.defBakPath);
             } else {
                 changeStatus(false);
             }
@@ -81,7 +99,7 @@ public class OptionsWindow {
         this.btnBackup.setOnAction(event -> {
             try {
                 fileBackup.backup();
-            } catch ( IOException e){
+            } catch ( IOException e ){
                 e.printStackTrace();
             }
         });
@@ -96,6 +114,9 @@ public class OptionsWindow {
             btnBackup.disableProperty().setValue(true);
         }
     }
+
+
+
 
 
 

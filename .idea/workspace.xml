@@ -7,23 +7,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="914c2a4f-b575-4446-862c-e4632e5ef0dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/userInterface/stages/steamDir/SteamDirProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/decos/Deco.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DecoSniper/decos/Deco.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/logic/DecoRecord.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/logic/LogicTesting.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DecoSniper/logic/LogicTesting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/logic/RotationSimulator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/userInterface/SniperGUI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/userInterface/buttonControls/DecoListView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/userInterface/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DecoSniper/userInterface/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/userInterface/windowControls/mouseListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configHandler/Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configHandler/ConfigHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/configHandler/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cfg/DecoSniperProps_def.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cfg/DecoSniperProps_main.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cfg/TestPropsModule1_def.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cfg/TestPropsModule1_main.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cfg/default.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cfg/main.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/DecoSniper_jar/DecoSniper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/DecoSniper_jar/DecoSniper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/AppProperties/PKey.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/AppProperties/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DecoSniper/AppProperties/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/backupHandler/FileBackup.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DecoSniper/backupHandler/FileBackup.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/backupHandler/SteamID.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/logic/decoRecord/DecoRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DecoSniper/logic/decoRecord/DecoRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/logic/questsCounter/DesiredDecos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DecoSniper/logic/questsCounter/DesiredDecos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/logic/questsCounter/RotationSimulator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DecoSniper/logic/questsCounter/RotationSimulator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/userInterface/ValuableChooserWindow/ValuableChooserWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/userInterface/dirPicker/SaveDetector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/userInterface/simulationOutput/SimOutputPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DecoSniper/userInterface/simulationOutput/SimOutputPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DecoSniper/utility/Utility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DecoSniper/utility/Utility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppProperties/Propsicl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppProperties/Propsicl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/userInterface/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/27-10-2018_3-32-48" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/27-10-2018_3-39-32/t.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/userInterface/stages/steamDir/OptionsWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/stages/steamDir/OptionsWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/userInterface/stages/steamDir/SaveDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userInterface/stages/steamDir/SaveDetector.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +48,9 @@
     <session id="1780389637">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.30" value="1" />
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.38" value="1" />
@@ -51,33 +59,36 @@
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="8" />
-          <entry key="java" value="44" />
+          <entry key="css" value="10" />
+          <entry key="java" value="77" />
+          <entry key="md" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="8" />
-          <entry key="JAVA" value="44" />
+          <entry key="CSS" value="10" />
+          <entry key="JAVA" value="77" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="269" />
-          <entry key="dummy" value="103" />
-          <entry key="java" value="18683" />
+          <entry key="dummy" value="123" />
+          <entry key="java" value="23291" />
+          <entry key="md" value="178" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="269" />
-          <entry key="JAVA" value="18683" />
-          <entry key="PLAIN_TEXT" value="103" />
+          <entry key="JAVA" value="23291" />
+          <entry key="PLAIN_TEXT" value="301" />
         </counts>
       </usages-collector>
     </session>
@@ -87,40 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/userInterface/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1266#1267#0" expanded="true" />
-                <element signature="e#1294#1295#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/application/Application.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="144" column="26" selection-start-line="144" selection-start-column="26" selection-end-line="144" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/AppProperties/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppProperties/ConfigHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="71" selection-end-column="9" />
+            <state relative-caret-position="227">
+              <caret line="236" selection-start-line="236" selection-end-line="236" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppProperties/Propsicl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
+            <state relative-caret-position="268">
+              <caret line="192" selection-start-line="192" selection-end-line="192" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -140,53 +119,95 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppProperties/PKey.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/userInterface/stages/steamDir/SaveDetector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backupHandler/FileBackup.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="75" column="1" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
+            <state relative-caret-position="204">
+              <caret line="57" column="60" selection-start-line="57" selection-start-column="60" selection-end-line="57" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1138#1139#0" expanded="true" />
+                <element signature="e#1171#1172#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utility/Utility.java">
+        <entry file="file://$PROJECT_DIR$/src/userInterface/stages/steamDir/OptionsWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backupHandler/Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="83" />
+            <state relative-caret-position="460">
+              <caret line="94" selection-start-line="94" selection-end-line="94" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1666#1667#0" expanded="true" />
+                <element signature="e#1706#1707#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/backupHandler/SteamID.java">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/event/Event.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="393">
+              <caret line="198" selection-start-line="198" selection-end-line="198" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/Scene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="2494" selection-start-line="2494" selection-end-line="2494" />
+              <folding>
+                <element signature="e#66572#66573#0" expanded="true" />
+                <element signature="e#66618#66619#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="8411" selection-start-line="8411" selection-end-line="8411" />
+              <folding>
+                <element signature="e#35131#35138#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/control/Button.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="186" selection-start-line="186" selection-end-line="186" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/userInterface/stages/steamDir/SteamDirProperties.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+              <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/layout/VBox.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="139" selection-start-line="139" selection-end-line="139" />
+              <folding>
+                <element signature="e#8033#8034#0" expanded="true" />
+                <element signature="e#8056#8057#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -214,10 +235,14 @@
       <find>desiredd</find>
       <find>Button</find>
       <find>valuables</find>
-      <find>valuable</find>
       <find>desired</find>
       <find>backup</find>
       <find>properties</find>
+      <find>valuable</find>
+      <find>Valuables</find>
+      <find>menu</find>
+      <find>steam</find>
+      <find>directo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -230,35 +255,41 @@
         <option value="$PROJECT_DIR$/src/userInterface/buttons/buttonRotation.java" />
         <option value="$PROJECT_DIR$/src/logic/DecoRecord.java" />
         <option value="$PROJECT_DIR$/src/userInterface/decoListPanes/DecoListView.java" />
-        <option value="$PROJECT_DIR$/src/logic/questsCounter/RotationSimulator.java" />
         <option value="$PROJECT_DIR$/src/userInterface/SniperGUI.java" />
         <option value="$PROJECT_DIR$/src/userInterface/simulationOutput/SimOutputPane.java" />
         <option value="$PROJECT_DIR$/src/userInterface/buttons/ButtonRotation.java" />
-        <option value="$PROJECT_DIR$/src/decos/Deco.java" />
-        <option value="$PROJECT_DIR$/src/userInterface/ValuableChooserWindow/ValuableChooserWindow.java" />
         <option value="$PROJECT_DIR$/src/userInterface/style.css" />
         <option value="$PROJECT_DIR$/src/userInterface/decoListPanes/decoListContainer.css" />
         <option value="$PROJECT_DIR$/src/userInterface/simulationOutput/style.css" />
         <option value="$PROJECT_DIR$/src/userInterface/decoListPanes/DecoListCell.java" />
         <option value="$PROJECT_DIR$/src/userInterface/decoListPanes/DecoListContainer.java" />
-        <option value="$PROJECT_DIR$/src/logic/decoRecord/DecoRecord.java" />
         <option value="$PROJECT_DIR$/src/configHandler.java" />
-        <option value="$PROJECT_DIR$/src/logic/questsCounter/DesiredDecos.java" />
-        <option value="$PROJECT_DIR$/src/utility/Utility.java" />
         <option value="$PROJECT_DIR$/src/backupHandler/SteamID.java" />
         <option value="$PROJECT_DIR$/src/userInterface/dirPicker/DirPicker.java" />
         <option value="$PROJECT_DIR$/src/userInterface/dirPicker/SaveDetector.java" />
         <option value="$PROJECT_DIR$/src/backupHandler/Test.java" />
-        <option value="$PROJECT_DIR$/src/backupHandler/FileBackup.java" />
         <option value="$PROJECT_DIR$/src/configHandler/ConfigHandler.java" />
         <option value="$PROJECT_DIR$/src/configHandler/Test.java" />
         <option value="$PROJECT_DIR$/src/configHandler/Propsicl.java" />
         <option value="$PROJECT_DIR$/src/configHandler/Config.java" />
         <option value="$PROJECT_DIR$/src/configHandler/PKey.java" />
         <option value="$PROJECT_DIR$/src/AppProperties/PKey.java" />
-        <option value="$PROJECT_DIR$/src/AppProperties/Propsicl.java" />
         <option value="$PROJECT_DIR$/src/AppProperties/ConfigHandler.java" />
+        <option value="$PROJECT_DIR$/src/userInterface/ValuableChooserWindow/ValuableChooserWindow.java" />
+        <option value="$PROJECT_DIR$/src/decos/Deco.java" />
+        <option value="$PROJECT_DIR$/todo.md" />
+        <option value="$PROJECT_DIR$/src/logic/decoRecord/DecoRecord.java" />
+        <option value="$PROJECT_DIR$/src/userInterface/scene/valuables/ValuablesWindow.java" />
+        <option value="$PROJECT_DIR$/src/logic/questsCounter/RotationSimulator.java" />
+        <option value="$PROJECT_DIR$/src/logic/questsCounter/DesiredDecos.java" />
+        <option value="$PROJECT_DIR$/src/userInterface/stages/steamDir/Button.java" />
+        <option value="$PROJECT_DIR$/src/utility/Utility.java" />
+        <option value="$PROJECT_DIR$/src/backupHandler/FileBackup.java" />
+        <option value="$PROJECT_DIR$/src/userInterface/stages/steamDir/SteamDirProperties.java" />
         <option value="$PROJECT_DIR$/src/userInterface/Main.java" />
+        <option value="$PROJECT_DIR$/src/AppProperties/Propsicl.java" />
+        <option value="$PROJECT_DIR$/src/userInterface/stages/steamDir/OptionsWindow.java" />
+        <option value="$PROJECT_DIR$/src/userInterface/stages/steamDir/SaveDetector.java" />
       </list>
     </option>
   </component>
@@ -268,11 +299,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="508" />
-    <option name="y" value="72" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="529" />
+    <option name="y" value="145" />
     <option name="width" value="1094" />
-    <option name="height" value="898" />
+    <option name="height" value="775" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -280,9 +311,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -318,30 +348,47 @@
               <item name="DecoSniper" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="userInterface" type="462c0819:PsiDirectoryNode" />
-              <item name="dirPicker" type="462c0819:PsiDirectoryNode" />
+              <item name="valuables" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DecoSniper" type="b2602c69:ProjectViewProjectNode" />
               <item name="DecoSniper" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="userInterface" type="462c0819:PsiDirectoryNode" />
-              <item name="statusBar" type="462c0819:PsiDirectoryNode" />
+              <item name="simulationOutput" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DecoSniper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DecoSniper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="userInterface" type="462c0819:PsiDirectoryNode" />
+              <item name="steamDir" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DecoSniper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DecoSniper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="utility" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544794381891" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546958281414" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Mailer" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="userInterface.stages.steamDir" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="configHandler" />
     </key>
@@ -361,7 +408,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test (1)">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="LogicTesting" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="logic.LogicTesting" />
       <module name="DecoSniper" />
@@ -418,11 +465,9 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.LogicTesting" />
       <item itemvalue="Application.Test" />
-      <item itemvalue="Application.Test (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.LogicTesting" />
@@ -446,8 +491,8 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4878837" visible="true" weight="0.17324094" />
-      <window_info id="Structure" order="1" sideWeight="0.5121163" side_tool="true" visible="true" weight="0.17324094" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4801444" visible="true" weight="0.18123667" />
+      <window_info id="Structure" order="1" sideWeight="0.5198556" side_tool="true" visible="true" weight="0.18123667" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -456,14 +501,14 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.2646421" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.329718" />
-      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.3286334" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3286334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Maven Projects" order="1" weight="0.32995737" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -486,9 +531,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/logic/questsCounter/RotationSimulator.java</url>
-          <line>89</line>
+          <line>86</line>
           <properties />
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/userInterface/stages/steamDir/SaveDetector.java</url>
+          <line>76</line>
+          <properties class="userInterface.stages.steamDir.SaveDetector" method="getGameSaveDir">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -501,9 +554,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/styleRecord.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/userInterface/buttons/ButtonRotation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
@@ -514,46 +564,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/questsCounter/RotationSimulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-          <folding>
-            <element signature="e#3528#3529#0" expanded="true" />
-            <element signature="e#3566#3567#0" expanded="true" />
-            <element signature="e#3604#3605#0" expanded="true" />
-            <element signature="e#3641#3642#0" expanded="true" />
-            <element signature="e#3686#3687#0" expanded="true" />
-            <element signature="e#3719#3720#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/decos/Deco.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="233" column="24" selection-start-line="233" selection-start-column="24" selection-end-line="233" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/userInterface/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/simulationOutput/SimOutputPane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/simulationOutput/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -571,48 +585,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/decoListPanes/DecoListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/decoListPanes/DecoListContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="46" column="10" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/userInterface/statusBar/statusbar.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/decoRecord/DecoRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/configHandler.java" />
-    <entry file="file://$PROJECT_DIR$/src/userInterface/ValuableChooserWindow/ValuableChooserWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="72" selection-start-line="62" selection-start-column="99" selection-end-line="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/questsCounter/DesiredDecos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="48" column="34" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/util/Calendar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2962">
@@ -627,23 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/userInterface/dirPicker/SaveDetector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/Utility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="24" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/application/Application.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
@@ -651,76 +610,280 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backupHandler/Test.java">
+    <entry file="file://$PROJECT_DIR$/src/AppProperties/PKey.java" />
+    <entry file="file://$PROJECT_DIR$/src/AppProperties/ConfigHandler.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/event/EventHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="83" />
+        <state relative-caret-position="357">
+          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/decos/Deco.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1802">
+          <caret line="208" column="40" selection-start-line="208" selection-start-column="40" selection-end-line="208" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/styleRecord.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/simulationOutput/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/todo.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/decoListPanes/DecoListView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="59" column="31" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/backupHandler/SteamID.java">
+    <entry file="file://$PROJECT_DIR$/src/logic/questsCounter/RotationSimulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        <state relative-caret-position="272">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+          <folding>
+            <element signature="e#3528#3529#0" expanded="true" />
+            <element signature="e#3566#3567#0" expanded="true" />
+            <element signature="e#3604#3605#0" expanded="true" />
+            <element signature="e#3641#3642#0" expanded="true" />
+            <element signature="e#3686#3687#0" expanded="true" />
+            <element signature="e#3719#3720#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/stages/steamDir/Button.java" />
+    <entry file="file://$PROJECT_DIR$/src/backupHandler/SteamID.java" />
+    <entry file="file://$PROJECT_DIR$/src/userInterface/simulationOutput/SimOutputPane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/questsCounter/DesiredDecos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/Utility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="85" selection-start-line="9" selection-start-column="85" selection-end-line="9" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/decoRecord/DecoRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="101" column="6" selection-start-line="101" selection-start-column="6" selection-end-line="101" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/scene/valuables/ValuablesWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppProperties/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/backupHandler/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppProperties/PDef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/decoListPanes/DecoListContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#2144#2145#0" expanded="true" />
+            <element signature="e#2192#2193#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/com/sun/javafx/event/EventHandlerManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="190" selection-start-line="190" selection-end-line="190" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/backupHandler/FileBackup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="75" column="1" selection-start-line="75" selection-start-column="1" selection-end-line="75" selection-end-column="1" />
+        <state relative-caret-position="404">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1880#1881#0" expanded="true" />
+            <element signature="e#1918#1919#0" expanded="true" />
+            <element signature="e#1968#1969#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppProperties/PKey.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/Parent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+        <state relative-caret-position="168">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppProperties/Propsicl.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/layout/Region.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
+        <state relative-caret-position="168">
+          <caret line="436" selection-start-line="436" selection-end-line="436" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/layout/Pane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3912#3913#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/layout/VBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="139" selection-start-line="139" selection-end-line="139" />
+          <folding>
+            <element signature="e#8033#8034#0" expanded="true" />
+            <element signature="e#8056#8057#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/userInterface/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1266#1267#0" expanded="true" />
-            <element signature="e#1294#1295#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppProperties/ConfigHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="71" selection-end-column="9" />
+        <state relative-caret-position="227">
+          <caret line="236" selection-start-line="236" selection-end-line="236" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppProperties/Test.java">
+    <entry file="file://$PROJECT_DIR$/src/AppProperties/Propsicl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        <state relative-caret-position="268">
+          <caret line="192" selection-start-line="192" selection-end-line="192" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/stages/steamDir/SteamDirProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/stages/steamDir/OptionsWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1666#1667#0" expanded="true" />
+            <element signature="e#1706#1707#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8411" selection-start-line="8411" selection-end-line="8411" />
+          <folding>
+            <element signature="e#35131#35138#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/control/Button.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="186" selection-start-line="186" selection-end-line="186" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/event/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="198" selection-start-line="198" selection-end-line="198" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_192/javafx-src.zip!/javafx/scene/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="2494" selection-start-line="2494" selection-end-line="2494" />
+          <folding>
+            <element signature="e#66572#66573#0" expanded="true" />
+            <element signature="e#66618#66619#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/userInterface/stages/steamDir/SaveDetector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="57" column="60" selection-start-line="57" selection-start-column="60" selection-end-line="57" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1138#1139#0" expanded="true" />
+            <element signature="e#1171#1172#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
