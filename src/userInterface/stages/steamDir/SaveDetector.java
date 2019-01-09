@@ -39,6 +39,7 @@ class SaveDetector {
 
     public void show() {
         steamIdDir = directoryChooser.showDialog(stage);
+        directoryChooser.setInitialDirectory(steamIdDir);
         dirSet = true;
         System.out.println(steamIdDir);
     }

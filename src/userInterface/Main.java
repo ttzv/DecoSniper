@@ -89,7 +89,9 @@ public class Main extends Application{
         //set returning point when leaving VCW scene
         VCW.setScenePrev(scene);
         VCW.build();
+
         VBox vBoxLeftPaneButtons = new VBox();
+
         Button btnShowValStage = new Button("Valuables...");
         btnShowValStage.setOnAction(event -> {
             primaryStage.setScene(VCW.getScene());
@@ -101,7 +103,12 @@ public class Main extends Application{
             System.out.println(desiredDecos.getValuableDecosMap());
             simOutputPane.updateSimInfo(desiredDecos);
         });
-        vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage, btnSimulate);
+        //Checkbox for turning save listener on or off
+        CheckBox cbxAutoNextSet = new CheckBox();
+        cbxAutoNextSet.setText("AutoDetect Set");
+        cbxAutoNextSet.setSelected(false);
+
+        vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage, btnSimulate, cbxAutoNextSet);
         borderPane.setLeft(vBoxLeftPaneButtons);
 
         button_1 = new Button("1");
@@ -158,6 +165,7 @@ public class Main extends Application{
             decoListContainer.updateFocusedSet();
         });
 
+
         Button buttonPrevSet = new Button("<");
         buttonPrevSet.setPrefSize(25, 50);
         buttonPrevSet.setOnAction(event -> {
@@ -192,6 +200,12 @@ public class Main extends Application{
         button_A.setOnMouseReleased(event -> {
             decoListContainer.setVvalue(1.0);
         });
+
+        //listener for cbx. Disable Button A if is ticked
+        cbxAutoNextSet.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            button_A.disableProperty().setValue(newValue);
+        });
+
         hBoxAction.getChildren().add(button_A);
 
         MenuBar menuBar = new MenuBar();

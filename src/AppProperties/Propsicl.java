@@ -57,7 +57,7 @@ public abstract class Propsicl {
      * @return boolean array where first index represents default props and second represents main props
      * for example, if array[0]==true then defProps.properties exists in given path, same with main props file
      */
-    private boolean[] checkFilesExisting() throws IOException {
+    private boolean[] checkFilesExisting() {
         boolean[] res = new boolean[2];
 
         Path resolvedPath;

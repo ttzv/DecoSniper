@@ -192,6 +192,7 @@ public class DecoRecord {
                 System.out.println("Completing quest: " + doQuest());
             }*/
         }
+
         System.out.println("Testing simulation...");
 
         RotationSimulator rotaSimNew = new RotationSimulator(desiredDecos.getValuableDecosMap(), getSkipRotation());
