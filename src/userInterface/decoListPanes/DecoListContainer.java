@@ -40,7 +40,7 @@ public class DecoListContainer extends ScrollPane {
                     decoSet.get(0).toString(),
                     decoSet.get(1).toString(),
                     decoSet.get(2).toString()));
-            System.out.println(cellsList);
+            //System.out.println(cellsList);
             counter++;
         }
         decoListBox.getChildren().addAll(cellsList);

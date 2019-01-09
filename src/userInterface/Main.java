@@ -2,6 +2,8 @@ package userInterface;
 
 import backupHandler.FileBackup;
 import decos.Deco;
+import dirWatcher.Watcher;
+import javafx.animation.Animation;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,6 +24,7 @@ import userInterface.stages.steamDir.OptionsWindow;
 import userInterface.statusBar.StatusBar;
 
 
+
 public class Main extends Application{
 
     /* TODO: separate Buttons */
@@ -30,6 +33,9 @@ public class Main extends Application{
     private Button button_2;
     private Button button_3;
     private DecoRecord decoRecord;
+    private SimOutputPane simOutputPane;
+    private DesiredDecos desiredDecos;
+    private DecoListContainer decoListContainer;
 
    /* //Backup configuration fields
     private final Path srcPath;
@@ -43,6 +49,10 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        primaryStage.setOnCloseRequest(event -> {
+            System.exit(9);
+        });
+
         //Initialization of logic
         decoRecord = new DecoRecord();
 
@@ -51,6 +61,9 @@ public class Main extends Application{
 
         //Initialization of configuration files and objects
         primaryStage.setTitle("DecoSniper");
+        //Create Options Window
+        OptionsWindow optionsWindow = new OptionsWindow();
+        optionsWindow.build();
 
         //GUI containers
         BorderPane borderPane = new BorderPane();
@@ -59,9 +72,9 @@ public class Main extends Application{
         HBox hBoxSlots = new HBox();
         HBox hBoxAction = new HBox();
 
-        SimOutputPane simOutputPane = new SimOutputPane(decoRecord);
+        simOutputPane = new SimOutputPane(decoRecord);
 
-        DecoListContainer decoListContainer = new DecoListContainer(decoRecord.getDecoList());
+        decoListContainer = new DecoListContainer(decoRecord.getDecoList());
         decoListContainer.getStylesheets().add(Main.class.getResource("styleRecord.css").toExternalForm());
         borderPane.setRight(decoListContainer);
         BorderPane.setMargin(decoListContainer, new Insets(25, 25, 25, 25));
@@ -82,7 +95,8 @@ public class Main extends Application{
         StatusBar statusBar = new StatusBar();
         borderPane.setBottom(statusBar.getStatusBar());
 
-        DesiredDecos desiredDecos = new DesiredDecos(decoRecord.getDecoList());
+
+        desiredDecos = new DesiredDecos(decoRecord.getDecoList());
 
         //Initialize VCW window object. getScene to remain in the same window, getStage to show in new window
         ValuablesWindow VCW = new ValuablesWindow(desiredDecos);
@@ -192,18 +206,23 @@ public class Main extends Application{
         button_A.setOnMousePressed(event -> {
             statusBar.clear();
             decoRecord.nextSet();
-            System.out.println(decoRecord.getDecoList());
             clearSlots();
             decoListContainer.resetFocusedProperty();
             decoListContainer.updateRecord();
         });
-        button_A.setOnMouseReleased(event -> {
-            decoListContainer.setVvalue(1.0);
-        });
 
         //listener for cbx. Disable Button A if is ticked
+
+        Watcher watcher = new Watcher(optionsWindow.getSavePath(), statusBar, decoRecord, button_1, button_2, button_3, decoListContainer);
+
         cbxAutoNextSet.selectedProperty().addListener((observable, oldValue, newValue) -> {
             button_A.disableProperty().setValue(newValue);
+            if(newValue) {
+
+                //optionsWindow.getWatcher().startWatching();
+                watcher.startWatching();
+
+            }
         });
 
         hBoxAction.getChildren().add(button_A);
@@ -246,8 +265,9 @@ public class Main extends Application{
         });
         menuActions.getItems().addAll(menuActNew, menuActPrevious, menuActNext, menuActMeldLevel, menuActClear, menuSimulate);
         MenuItem menuSteamLoc = new MenuItem("Steam Location");
-        OptionsWindow optionsWindow = new OptionsWindow();
-        optionsWindow.build();
+
+
+
         menuSteamLoc.setOnAction(event -> {
 
             optionsWindow.getStage().show();
@@ -282,11 +302,9 @@ public class Main extends Application{
     }
 
     public void updateSlotsInfo(){
-
-            button_1.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(0)).getName());
-            button_2.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(1)).getName());
-            button_3.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(2)).getName());
-
+        button_1.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(0)).getName());
+        button_2.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(1)).getName());
+        button_3.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(2)).getName());
     }
 
     public void clearSlots(){
@@ -294,6 +312,7 @@ public class Main extends Application{
         button_2.setText("2");
         button_3.setText("3");
     }
+
 
 }
 

@@ -1,6 +1,7 @@
 package userInterface.stages.steamDir;
 
 import backupHandler.FileBackup;
+import dirWatcher.Watcher;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,14 +20,18 @@ public class OptionsWindow {
     private VBox layout;
     private Label dirLabel;
     private Label statusLabel;
+    private Label watcherLabel;
     private Button btnChange;
     private Button btnBackup;
+    private Button btnAttach;
 
     private SaveDetector saveDetector;
 
     private FileBackup fileBackup;
 
     private Path saveDir;
+
+    private Watcher watcher;
 
 
 
@@ -41,6 +46,7 @@ public class OptionsWindow {
         }
 
         fileBackup.setBackupPath(Utility.defBakPath);
+
     }
 
     public Stage getStage(){
@@ -58,40 +64,47 @@ public class OptionsWindow {
 
         statusLabel = new Label("Not detected");
 
+        watcherLabel = new Label("Not attached");
+
         btnChange = new Button("Change...");
         addBtnChangeHandler();
+
+        btnAttach = new Button ("Attach");
+        addBtnAttachHandler();
 
         btnBackup = new Button("Backup savefile");
         btnBackup.disableProperty().setValue(true);
         if(saveDir != null) {
             dirLabel.setText(saveDir.toString());
+            watcherLabel.setText("Watcher dir: \n" + saveDir.toString());
             changeStatus(true);
         }else{
             changeStatus(false);
         }
         addBtnBackupHandler();
 
-        layout.getChildren().addAll(dirLabel, btnChange, statusLabel, btnBackup);
 
+
+        layout.getChildren().addAll(dirLabel, btnChange, statusLabel, btnBackup, watcherLabel, btnAttach);
 
     }
 
     private void setDirString(String s){
         this.dirLabel.setText(s);
+        this.watcherLabel.setText("Watcher dir: \n" + s);
     }
 
     private void addBtnChangeHandler(){
         this.btnChange.setOnAction(event -> {
             saveDetector.show();
-            Path saveDir = saveDetector.getGameSaveDir();
+            saveDir = saveDetector.getGameSaveDir();
             if(saveDir != null) {
+                fileBackup.setSrcPath(saveDir);
                 setDirString(saveDir.toString());
                 changeStatus(true);
-                fileBackup.setSrcPath(saveDir);
             } else {
                 changeStatus(false);
             }
-
         });
     }
 
@@ -105,14 +118,40 @@ public class OptionsWindow {
         });
     }
 
+    private void addBtnAttachHandler(){
+        btnAttach.setOnAction(event -> {
+            try {
+                if (watcher == null) {
+                    watcher = new Watcher(saveDir);
+                } else {
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+
+
     private void changeStatus(boolean status){
         if(status){
             btnBackup.disableProperty().setValue(false);
+            btnAttach.disableProperty().setValue(false);
             statusLabel.setText("Found");
         } else {
             statusLabel.setText("Not Found");
             btnBackup.disableProperty().setValue(true);
+            btnAttach.disableProperty().setValue(true);
         }
+    }
+
+    public Path getSavePath(){
+        return this.saveDir;
+    }
+
+    public Watcher getWatcher(){
+        return watcher;
     }
 
 
