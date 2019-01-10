@@ -1,5 +1,6 @@
 package dirWatcher;
 
+import javafx.application.Platform;
 import javafx.scene.control.Button;
 import logic.decoRecord.DecoRecord;
 import sun.font.Decoration;
@@ -20,7 +21,7 @@ public class WatcherResponder implements WatcherListener{
     private Button b3;
     private DecoListContainer decoListContainer;
 
-    WatcherResponder(StatusBar statusBar, DecoRecord decoRecord, Button b1, Button b2, Button b3, DecoListContainer decoListContainer){
+    public WatcherResponder(StatusBar statusBar, DecoRecord decoRecord, Button b1, Button b2, Button b3, DecoListContainer decoListContainer){
 
         this.statusBar = statusBar;
         this.decoRecord = decoRecord;
@@ -31,12 +32,18 @@ public class WatcherResponder implements WatcherListener{
     }
     @Override
     public void actionPerformed() {
-        statusBar.clear();
-        decoRecord.nextSet();
-        b1.setText("1");
-        b2.setText("2");
-        b3.setText("3");
-        decoListContainer.resetFocusedProperty();
-        decoListContainer.updateRecord();
+        platformfx();
+    }
+
+    private void platformfx(){
+        Platform.runLater(() -> {
+            statusBar.clear();
+            decoRecord.nextSet();
+            b1.setText("1");
+            b2.setText("2");
+            b3.setText("3");
+            decoListContainer.resetFocusedProperty();
+            decoListContainer.updateRecord();
+        });
     }
 }

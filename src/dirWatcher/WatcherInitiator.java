@@ -14,12 +14,10 @@ public class WatcherInitiator {
     }
 
     public void throwEvent() {
-        System.out.println("Initiated");
+        System.out.println("Event thrown");
 
         for (WatcherListener cl : listeners) {
             cl.actionPerformed();
         }
     }
-}
-
 }

@@ -5,6 +5,7 @@ import decos.Deco;
 import dirWatcher.Watcher;
 import dirWatcher.WatcherInitiator;
 import dirWatcher.WatcherListener;
+import dirWatcher.WatcherResponder;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -57,7 +58,7 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception {
 
         primaryStage.setOnCloseRequest(event -> {
-            System.exit(9);
+            System.exit(0);
         });
 
         //Initialization of logic
@@ -68,8 +69,10 @@ public class Main extends Application{
 
         //Initialization of configuration files and objects
         primaryStage.setTitle("DecoSniper");
+        WatcherInitiator watcherInitiator = new WatcherInitiator();
+        Watcher watcher = new Watcher (watcherInitiator);
         //Create Options Window
-        OptionsWindow optionsWindow = new OptionsWindow();
+        OptionsWindow optionsWindow = new OptionsWindow(watcher);
         optionsWindow.build();
 
         //GUI containers
@@ -219,12 +222,14 @@ public class Main extends Application{
         });
 
         //listener for cbx. Disable Button A if cbox is ticked and start wtching on attached directory
+        WatcherListener watcherListener = new WatcherResponder(statusBar, decoRecord, button_1, button_2, button_3, decoListContainer);
+        watcherInitiator.addListener(watcherListener);
 
         cbxAutoNextSet.selectedProperty().addListener((observable, oldValue, newValue) -> {
             button_A.disableProperty().setValue(newValue);
             if(newValue) {
 
-                optionsWindow.getWatcher().startWatching();
+                watcher.startWatching();
 
             }
         });

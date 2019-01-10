@@ -33,11 +33,10 @@ public class OptionsWindow {
     private Path saveDir;
 
     private Watcher watcher;
-    private ObservableBooleanValue dirNotifier;
 
 
-    public OptionsWindow(){
-        this.dirNotifier = dirNotifier;
+    public OptionsWindow(Watcher watcher){
+        this.watcher = watcher;
         stage = new Stage();
         fileBackup = new FileBackup();
         saveDetector = new SaveDetector(stage);
@@ -122,15 +121,7 @@ public class OptionsWindow {
 
     private void addBtnAttachHandler(){
         btnAttach.setOnAction(event -> {
-            try {
-                if (watcher == null) {
-                    watcher = new Watcher(saveDir);
-                } else {
-
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            watcher.register(saveDir);
         });
     }
 
@@ -147,20 +138,5 @@ public class OptionsWindow {
             btnAttach.disableProperty().setValue(true);
         }
     }
-
-    public Path getSavePath(){
-        return this.saveDir;
-    }
-
-    public Watcher getWatcher(){
-        return watcher;
-    }
-
-
-
-
-
-
-
 
 }

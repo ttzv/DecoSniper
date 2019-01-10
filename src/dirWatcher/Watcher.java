@@ -15,25 +15,28 @@ public class Watcher {
     private Path dir;
     private long lastModTime = 0;
     private boolean registered;
+    private WatcherInitiator watcherInitiator;
 
-    public Watcher() throws IOException{
+    public Watcher(WatcherInitiator watcherInitiator) throws IOException{
+        this.watcherInitiator = watcherInitiator;
         watcher = FileSystems.getDefault().newWatchService();
         registered = false;
     }
 
-    public Watcher (Path dir) throws IOException {
-        this();
+    public Watcher (Path dir, WatcherInitiator watcherInitiator) throws IOException {
+        this(watcherInitiator);
         this.dir = dir;
         register(dir.getParent());
     }
 
     public void register(Path dir){
         try {
-            dir.register(watcher, ENTRY_MODIFY);
+            dir.getParent().register(watcher, ENTRY_MODIFY);
         } catch (IOException e) {
             e.printStackTrace();
         }
         registered = true;
+        this.dir = dir;
     }
 
     private void processEvents() throws InterruptedException{
@@ -88,6 +91,8 @@ public class Watcher {
     }
 
     private void performAction(){
+        System.out.println("modified");
+        watcherInitiator.throwEvent();
     }
 
 }
