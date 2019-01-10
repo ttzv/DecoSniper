@@ -126,7 +126,6 @@ public class OptionsWindow {
     }
 
 
-
     private void changeStatus(boolean status){
         if(status){
             btnBackup.disableProperty().setValue(false);

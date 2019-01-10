@@ -1,5 +1,6 @@
 package userInterface.decoListPanes;
 
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
@@ -27,6 +28,8 @@ public class DecoListContainer extends ScrollPane {
         decoListBox = new VBox(5);
         //decoListBox.setStyle("-fx-background-color: #4286f4");
         this.setContent(decoListBox);
+        //scrollbar always on bottom
+        this.vvalueProperty().bind(decoListBox.heightProperty());
 
         updateRecord();
     }
@@ -58,6 +61,7 @@ public class DecoListContainer extends ScrollPane {
             d.setBkgOnFocus(false);
         }
         cellsList.get(focusedSet).setBkgOnFocus(true);
+
     }
 
     public void decrementFocusedProperty(){
