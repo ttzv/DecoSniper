@@ -1,9 +1,7 @@
 package dirWatcher;
 
-import javafx.scene.control.Button;
-import logic.decoRecord.DecoRecord;
-import userInterface.decoListPanes.DecoListContainer;
-import userInterface.statusBar.StatusBar;
+
+import javafx.beans.value.ObservableBooleanValue;
 
 import java.io.IOException;
 import java.nio.file.*;
@@ -17,12 +15,6 @@ public class Watcher {
     private Path dir;
     private long lastModTime = 0;
     private boolean registered;
-    private StatusBar statusBar;
-    private DecoRecord decoRecord;
-    private Button button_1;
-    private Button button_2;
-    private Button button_3;
-    private DecoListContainer decoListContainer;
 
     public Watcher() throws IOException{
         watcher = FileSystems.getDefault().newWatchService();
@@ -33,16 +25,6 @@ public class Watcher {
         this();
         this.dir = dir;
         register(dir.getParent());
-    }
-
-    public Watcher(Path savePath, StatusBar statusBar, DecoRecord decoRecord, Button button_1, Button button_2, Button button_3, DecoListContainer decoListContainer) throws IOException {
-        this(savePath);
-        this.statusBar = statusBar;
-        this.decoRecord = decoRecord;
-        this.button_1 = button_1;
-        this.button_2 = button_2;
-        this.button_3 = button_3;
-        this.decoListContainer = decoListContainer;
     }
 
     public void register(Path dir){
@@ -106,12 +88,6 @@ public class Watcher {
     }
 
     private void performAction(){
-        decoRecord.nextSet();
-        button_1.setText("1");
-        button_2.setText("2");
-        button_3.setText("3");
-        decoListContainer.resetFocusedProperty();
-        decoListContainer.updateRecord();
     }
 
 }

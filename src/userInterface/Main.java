@@ -3,7 +3,8 @@ package userInterface;
 import backupHandler.FileBackup;
 import decos.Deco;
 import dirWatcher.Watcher;
-import javafx.animation.Animation;
+import dirWatcher.WatcherInitiator;
+import dirWatcher.WatcherListener;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -32,10 +33,16 @@ public class Main extends Application{
     private Button button_1;
     private Button button_2;
     private Button button_3;
+
     private DecoRecord decoRecord;
     private SimOutputPane simOutputPane;
     private DesiredDecos desiredDecos;
     private DecoListContainer decoListContainer;
+
+
+    private Watcher watcher;
+    private WatcherInitiator watcherInitiator;
+    private WatcherListener watcherListener;
 
    /* //Backup configuration fields
     private final Path srcPath;
@@ -211,16 +218,13 @@ public class Main extends Application{
             decoListContainer.updateRecord();
         });
 
-        //listener for cbx. Disable Button A if is ticked
-
-        Watcher watcher = new Watcher(optionsWindow.getSavePath(), statusBar, decoRecord, button_1, button_2, button_3, decoListContainer);
+        //listener for cbx. Disable Button A if cbox is ticked and start wtching on attached directory
 
         cbxAutoNextSet.selectedProperty().addListener((observable, oldValue, newValue) -> {
             button_A.disableProperty().setValue(newValue);
             if(newValue) {
 
-                //optionsWindow.getWatcher().startWatching();
-                watcher.startWatching();
+                optionsWindow.getWatcher().startWatching();
 
             }
         });

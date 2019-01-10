@@ -2,6 +2,7 @@ package userInterface.stages.steamDir;
 
 import backupHandler.FileBackup;
 import dirWatcher.Watcher;
+import javafx.beans.value.ObservableBooleanValue;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -32,10 +33,11 @@ public class OptionsWindow {
     private Path saveDir;
 
     private Watcher watcher;
-
+    private ObservableBooleanValue dirNotifier;
 
 
     public OptionsWindow(){
+        this.dirNotifier = dirNotifier;
         stage = new Stage();
         fileBackup = new FileBackup();
         saveDetector = new SaveDetector(stage);
