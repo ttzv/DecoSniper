@@ -79,6 +79,7 @@ public class OptionsWindow {
             dirLabel.setText(saveDir.toString());
             watcherLabel.setText("Watcher dir: \n" + saveDir.toString());
             changeStatus(true);
+            watcher.register(saveDir);
         }else{
             changeStatus(false);
         }

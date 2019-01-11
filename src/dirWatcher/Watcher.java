@@ -41,33 +41,40 @@ public class Watcher {
     }
 
     private void processEvents() throws InterruptedException{
-        while(true){
-            WatchKey key;
+        if(isRegistered()) {
+            while(true) {
 
-            key = watcher.take();
+                WatchKey key;
 
-            for(WatchEvent<?> event : key.pollEvents()){
-                WatchEvent.Kind<?> kind = event.kind();
+                key = watcher.take();
 
-                if(kind == OVERFLOW){
-                    System.out.println("Overflow");
-                    continue;
-                }
+                for (WatchEvent<?> event : key.pollEvents()) {
+                    WatchEvent.Kind<?> kind = event.kind();
 
-                if(kind == ENTRY_MODIFY){
-                    try {
-                        modified(dir);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (kind == OVERFLOW) {
+                        System.out.println("Overflow");
+                        continue;
+                    }
+
+                    if (kind == ENTRY_MODIFY) {
+                        try {
+                            modified(dir);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
+
+                boolean valid = key.reset();
+                if (!valid) {
+                    break;
+                }
             }
 
-            boolean valid = key.reset();
-            if(!valid){
-                break;
-            }
+        } else {
+            System.err.println("Watcher dir not registered");
         }
+
     }
 
     public void startWatching(){
@@ -103,4 +110,7 @@ public class Watcher {
         watcherInitiator.throwEvent();
     }
 
+    public boolean isRegistered() {
+        return registered;
+    }
 }

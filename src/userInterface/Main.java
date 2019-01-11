@@ -130,7 +130,10 @@ public class Main extends Application{
         cbxAutoNextSet.setText("AutoDetect Set");
         cbxAutoNextSet.setSelected(false);
 
-        vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage, btnSimulate, cbxAutoNextSet);
+        Label watchStatusLabel = new Label("Watching!");
+        watchStatusLabel.setVisible(false);
+
+        vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage, btnSimulate, cbxAutoNextSet, watchStatusLabel);
         borderPane.setLeft(vBoxLeftPaneButtons);
 
         button_1 = new Button("1");
@@ -227,8 +230,10 @@ public class Main extends Application{
             button_A.disableProperty().setValue(newValue);
             if (newValue) {
                 watcher.startWatching();
+                watchStatusLabel.setVisible(watcher.isRegistered());
             } else {
                 watcher.stopWatching();
+                watchStatusLabel.setVisible(newValue);
             }
         });
 
