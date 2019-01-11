@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="DecoSniper:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/DecoSniper_jar</output-path>
-    <root id="archive" name="DecoSniper.jar">
-      <element id="module-output" name="DecoSniper" />
-    </root>
-  </artifact>
-</component>
