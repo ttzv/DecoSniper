@@ -57,9 +57,7 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        primaryStage.setOnCloseRequest(event -> {
-            System.exit(0);
-        });
+
 
         //Initialization of logic
         decoRecord = new DecoRecord();
@@ -227,10 +225,10 @@ public class Main extends Application{
 
         cbxAutoNextSet.selectedProperty().addListener((observable, oldValue, newValue) -> {
             button_A.disableProperty().setValue(newValue);
-            if(newValue) {
-
+            if (newValue) {
                 watcher.startWatching();
-
+            } else {
+                watcher.stopWatching();
             }
         });
 
@@ -305,6 +303,10 @@ public class Main extends Application{
         primaryStage.setScene(scene);
 
         primaryStage.show();
+
+        primaryStage.setOnCloseRequest(event -> {
+            watcher.stopWatching();
+        });
 
         //primaryStage.setOnCloseRequest();
 
