@@ -22,7 +22,9 @@ public class DecoListContainer extends ScrollPane {
         setPadding(new Insets(5, 5, 5, 5));
         setPrefWidth(100);
         this.decoList = decoList;
+
         focusedSet = decoList.size() - 1;
+
         cellsList = new ArrayList<>();
 
         decoListBox = new VBox(5);
@@ -30,8 +32,6 @@ public class DecoListContainer extends ScrollPane {
         this.setContent(decoListBox);
         //scrollbar always on bottom
         this.vvalueProperty().bind(decoListBox.heightProperty());
-
-        updateRecord();
     }
 
     public void updateRecord(){

@@ -24,7 +24,7 @@ public class DecoRecord {
     public DecoRecord(){
         decoList = new ArrayList<>();
         reader = new Scanner(System.in);
-        nextSet(); //creates new set at start
+        //nextSet(); //creates new set at start
     }
 
     /**

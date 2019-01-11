@@ -16,6 +16,7 @@ public class Watcher {
     private long lastModTime = 0;
     private boolean registered;
     private WatcherInitiator watcherInitiator;
+    private volatile Thread processingThread;
 
     public Watcher(WatcherInitiator watcherInitiator) throws IOException{
         this.watcherInitiator = watcherInitiator;
@@ -70,7 +71,7 @@ public class Watcher {
     }
 
     public void startWatching(){
-        Thread processingThread = new Thread(() -> {
+        processingThread = new Thread(() -> {
             try {
                 this.processEvents();
             } catch (InterruptedException e) {
@@ -78,6 +79,13 @@ public class Watcher {
             }
         });
         processingThread.start();
+    }
+
+    public void stopWatching(){
+        Thread thread = processingThread;
+        if(thread != null){
+            thread.interrupt();
+        }
     }
 
     private void modified(Path path) throws IOException{
