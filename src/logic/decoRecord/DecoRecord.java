@@ -147,7 +147,9 @@ public class DecoRecord {
      */
     public void clearAll(){
         decoList.clear();
-        decoSet.clear();
+        if(decoSet != null) {
+            decoSet.clear();
+        }
         numberOfSets = 0;
         focusedSet = 0;
         observedSet = 1;

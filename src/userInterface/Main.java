@@ -45,11 +45,6 @@ public class Main extends Application{
     private WatcherInitiator watcherInitiator;
     private WatcherListener watcherListener;
 
-   /* //Backup configuration fields
-    private final Path srcPath;
-    private final Path bkpPath;
-    */
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -270,7 +265,6 @@ public class Main extends Application{
         menuActClear.setOnAction(event -> {
             simOutputPane.clear();
             decoRecord.clearAll();
-            decoRecord.nextSet();
             desiredDecos.clear();
             clearSlots();
             decoListContainer.updateRecord();

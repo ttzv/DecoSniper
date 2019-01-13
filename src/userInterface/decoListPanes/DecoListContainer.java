@@ -57,10 +57,12 @@ public class DecoListContainer extends ScrollPane {
     }
 
     public void updateFocusedSet(){
-        for (DecoListCell d : cellsList) {
-            d.setBkgOnFocus(false);
+        if(cellsList.size() > 0) {
+            for (DecoListCell d : cellsList) {
+                d.setBkgOnFocus(false);
+            }
+            cellsList.get(focusedSet).setBkgOnFocus(true);
         }
-        cellsList.get(focusedSet).setBkgOnFocus(true);
 
     }
 

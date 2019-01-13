@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -41,7 +42,7 @@ public class ValuablesWindow {
     }
 
     public Scene getScene() {
-        //build(); //removed build form getter to prevent building scene from scratch everytime its shown
+        //build(); //removed build from getter to prevent building scene from scratch everytime its shown
         sortList(sourceListView);
         sortList(targetListView);
         return scene;
@@ -89,7 +90,8 @@ public class ValuablesWindow {
 
         region.getChildren().addAll(sourceListView, vBoxChooseButtons, targetListView);
 
-        addHandlers();
+        addBtnHandlers();
+        addClickHandlers();
 
     }
 
@@ -126,31 +128,53 @@ public class ValuablesWindow {
         }
     }
 
-    private void addHandlers(){
+    private void eventSrcList(){
+        Deco item = this.sourceListView.getSelectionModel().getSelectedItem();
+        System.out.println("Added:" + item);
+        moveItem(item, srcList, targetList);
+
+        this.sourceListView.setItems(srcList);
+
+        desiredDecos.setDesiredDecoList(Deco.listDecoToId(new ArrayList<>(targetList)));
+    }
+
+    private void eventTrgList(){
+        Deco item = this.targetListView.getSelectionModel().getSelectedItem();
+        System.out.println("Removed:" + item);
+        moveItem(item, targetList, srcList);
+
+        this.targetListView.setItems(targetList);
+
+        desiredDecos.setDesiredDecoList(Deco.listDecoToId(new ArrayList<>(targetList)));
+    }
+
+    private void addBtnHandlers(){
         this.btnAdd.setOnAction(event -> {
-            Deco item = this.sourceListView.getSelectionModel().getSelectedItem();
-            System.out.println(item);
-            moveItem(item, srcList, targetList);
-
-            this.sourceListView.setItems(srcList);
-
-            desiredDecos.setDesiredDecoList(Deco.listDecoToId(new ArrayList<>(targetList)));
+            eventSrcList();
         });
 
         this.btnDel.setOnAction(event -> {
-            Deco item = this.targetListView.getSelectionModel().getSelectedItem();
-            System.out.println(item);
-            moveItem(item, targetList, srcList);
-
-            this.targetListView.setItems(targetList);
-
-            desiredDecos.setDesiredDecoList(Deco.listDecoToId(new ArrayList<>(targetList)));
+            eventTrgList();
         });
 
         this.btnApply.setOnAction(event -> {
             this.changeScene(scenePrev);
         });
 
+    }
+
+    private void addClickHandlers(){
+        this.sourceListView.setOnMouseClicked((MouseEvent event) -> {
+            if(event.getClickCount() == 2){
+                eventSrcList();
+            }
+        });
+
+        this.targetListView.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getClickCount() == 2){
+                eventTrgList();
+            }
+        });
     }
 
     /**

@@ -11,7 +11,7 @@ public class FileBackup {
     private Path backupPath;
 
     /**
-     * Creates new object responsible for making backups of given file in given directory
+     * Creates new object responsible for making backups of given file (srcPath) in given directory (backupPath)
      */
     public FileBackup(Path backupPath, Path srcPath){
         this.backupPath = FileSystems.getDefault().getPath("");
