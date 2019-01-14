@@ -1,8 +1,6 @@
 package dirWatcher;
 
 
-import javafx.beans.value.ObservableBooleanValue;
-
 import java.io.IOException;
 import java.nio.file.*;
 
@@ -17,6 +15,7 @@ public class Watcher {
     private boolean registered;
     private WatcherInitiator watcherInitiator;
     private volatile Thread processingThread;
+    private boolean watchStatus;
 
     public Watcher(WatcherInitiator watcherInitiator) throws IOException{
         this.watcherInitiator = watcherInitiator;
@@ -77,6 +76,9 @@ public class Watcher {
 
     }
 
+    /**
+     * Starts watching currently registered directory for modifications on new Thread.
+     */
     public void startWatching(){
         processingThread = new Thread(() -> {
             try {
@@ -86,15 +88,29 @@ public class Watcher {
             }
         });
         processingThread.start();
+        watchStatus = true;
     }
 
+    /**
+     * Interrupts Watcher Thread.
+     */
     public void stopWatching(){
         Thread thread = processingThread;
         if(thread != null){
             thread.interrupt();
+            watchStatus = false;
         }
     }
 
+    /**
+     * Method used to check if file was modified.
+     * It is possible that Watcher returns multiple quick events related to file modification.
+     * This happens when file is edited in text editor - two events are recorded:
+     * actual modification of contents, and modification of timestamp.
+     * To prevent that we implement a time check between modification events.
+     * @param path Path to file
+     * @throws IOException if file was not found under given Path.
+     */
     private void modified(Path path) throws IOException{
 
         if(Files.getLastModifiedTime(path).toMillis() - lastModTime > 1000){
@@ -112,5 +128,9 @@ public class Watcher {
 
     public boolean isRegistered() {
         return registered;
+    }
+
+    public boolean isWatching(){
+        return watchStatus;
     }
 }

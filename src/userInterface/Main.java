@@ -40,11 +40,6 @@ public class Main extends Application{
     private DesiredDecos desiredDecos;
     private DecoListContainer decoListContainer;
 
-
-    private Watcher watcher;
-    private WatcherInitiator watcherInitiator;
-    private WatcherListener watcherListener;
-
     public static void main(String[] args) {
         launch(args);
     }
@@ -65,7 +60,7 @@ public class Main extends Application{
         WatcherInitiator watcherInitiator = new WatcherInitiator();
         Watcher watcher = new Watcher (watcherInitiator);
         //Create Options Window
-        OptionsWindow optionsWindow = new OptionsWindow(watcher);
+        OptionsWindow optionsWindow = new OptionsWindow(fileBackup, watcher);
         optionsWindow.build();
 
         //GUI containers
@@ -185,7 +180,6 @@ public class Main extends Application{
             decoListContainer.updateFocusedSet();
         });
 
-
         Button buttonPrevSet = new Button("<");
         buttonPrevSet.setPrefSize(25, 50);
         buttonPrevSet.setOnAction(event -> {
@@ -217,8 +211,8 @@ public class Main extends Application{
             decoListContainer.updateRecord();
         });
 
-        //listener for cbx. Disable Button A if cbox is ticked and start wtching on attached directory
-        WatcherListener watcherListener = new WatcherResponder(statusBar, decoRecord, button_1, button_2, button_3, decoListContainer);
+        //listener for cbx. Disable Button A if cBox is ticked and start watching on attached directory
+        WatcherListener watcherListener = new WatcherResponder(statusBar, decoRecord, button_1, button_2, button_3, decoListContainer, fileBackup, optionsWindow);
         watcherInitiator.addListener(watcherListener);
 
         cbxAutoNextSet.selectedProperty().addListener((observable, oldValue, newValue) -> {
@@ -226,9 +220,12 @@ public class Main extends Application{
             if (newValue) {
                 watcher.startWatching();
                 watchStatusLabel.setVisible(watcher.isRegistered());
+                optionsWindow.cbxAutoBakDisabled(newValue);
             } else {
                 watcher.stopWatching();
                 watchStatusLabel.setVisible(newValue);
+                optionsWindow.cbxAutoBakDisabled(newValue);
+                optionsWindow.cbxAutoBakUnselect();
             }
         });
 
@@ -239,22 +236,8 @@ public class Main extends Application{
         Menu menuOptions = new Menu("Options");
         menuBar.getMenus().addAll(menuActions, menuOptions);
 
-        MenuItem menuActNew = new MenuItem("New");
-        menuActNew.setOnAction(event -> {
-            simOutputPane.clear();
-            decoRecord.clearAll();
-            decoRecord.nextSet();
-            clearSlots();
-            decoListContainer.updateRecord();
-        });
-        MenuItem menuActPrevious = new MenuItem("Previous");
-        MenuItem menuActNext = new MenuItem("Next");
-        Menu menuActMeldLevel = new Menu("Streamstone");
-            MenuItem menuStreamstoneShard = new MenuItem("Streamstone Shard (Lv. 1)");
-            MenuItem menuStreamstone = new MenuItem("Streamstone (Lv. 2)");
-            MenuItem menuGleamingStreamstone = new MenuItem("Gleaming Streamstone (Lv. 3)");
-            menuActMeldLevel.getItems().addAll(menuStreamstoneShard, menuStreamstone, menuGleamingStreamstone);
         MenuItem menuActClear = new MenuItem("Clear");
+
         MenuItem menuSimulate = new MenuItem("Simulate");
         menuSimulate.setOnAction(event -> {
 
@@ -269,10 +252,8 @@ public class Main extends Application{
             clearSlots();
             decoListContainer.updateRecord();
         });
-        menuActions.getItems().addAll(menuActNew, menuActPrevious, menuActNext, menuActMeldLevel, menuActClear, menuSimulate);
+        menuActions.getItems().addAll(menuActClear, menuSimulate);
         MenuItem menuSteamLoc = new MenuItem("Steam Location");
-
-
 
         menuSteamLoc.setOnAction(event -> {
 
@@ -281,21 +262,7 @@ public class Main extends Application{
             //fileBackup.setSrcPath(saveDetector.getGameSaveDir());
         });
 
-        MenuItem menuOptLoad = new MenuItem("Load");
-        menuOptLoad.setOnAction(event -> {
-
-        });
-        MenuItem menuOptRecord = new MenuItem("Record");
-        menuOptRecord.setOnAction(event -> {
-            /*if(DecoListContainer.isVisible()){
-                DecoListContainer.setVisible(false);
-            }
-            else{
-                DecoListContainer.setVisible(true);
-            }*/
-            decoListContainer.setVvalue(1.0);
-        });
-        menuOptions.getItems().addAll(menuOptLoad, menuSteamLoc, menuOptRecord);
+        menuOptions.getItems().addAll(menuSteamLoc);
 
         borderPane.setTop(menuBar);
 

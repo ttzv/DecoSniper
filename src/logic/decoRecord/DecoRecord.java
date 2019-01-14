@@ -1,9 +1,5 @@
 package logic.decoRecord;
 
-import decos.Deco;
-import logic.questsCounter.DesiredDecos;
-import logic.questsCounter.RotationSimulator;
-
 import java.util.*;
 
 public class DecoRecord {
@@ -135,11 +131,9 @@ public class DecoRecord {
      * @return 1 or 2 depending on place in rotation
      */
     public int getSkipRotation() {
-
         int[] rotation = {1, 1, 2};
         System.out.println("rotationStatus from method is: " + rotationStatus);
         return rotation[rotationStatus-1];
-
     }
 
     /**
@@ -163,7 +157,7 @@ public class DecoRecord {
         return numberOfSets;
     }
 
-    public void start(){
+    /*public void start(){
 
         System.out.println("List of default Valuable Decos: ");
         System.out.println(Deco.getDefaultValuableDecos());
@@ -192,7 +186,7 @@ public class DecoRecord {
             stringInput = reader.nextLine();
             if(!stringInput.isEmpty() && stringInput.equals("y".trim().toLowerCase())){
                 System.out.println("Completing quest: " + doQuest());
-            }*/
+            }
         }
 
         System.out.println("Testing simulation...");
@@ -201,5 +195,5 @@ public class DecoRecord {
         rotaSimNew.simulate();
         System.out.println("(new)Result is: \n" + rotaSimNew);
 
-    }
+    }*/
 }

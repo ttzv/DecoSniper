@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Legend - Deco(ID, Rarity)
@@ -199,10 +200,8 @@ public enum Deco {
     }
 
     public static final ArrayList<Deco> getDecosList() {
-        ArrayList<Deco> decoList = new ArrayList<>();
-        for (Deco d : values()){
-            decoList.add(d);
-        }
+        ArrayList<Deco> decoList = new ArrayList<>(Arrays.asList(values()));
+        decoList.remove(decoList.size() - 1 ); //remove Empty from final DecoList
         return decoList;
     }
 

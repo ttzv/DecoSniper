@@ -2,7 +2,6 @@ package userInterface.stages.steamDir;
 
 import backupHandler.FileBackup;
 import dirWatcher.Watcher;
-import javafx.beans.value.ObservableBooleanValue;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,6 +27,9 @@ public class OptionsWindow {
     private Button btnBackup;
     private Button btnAttach;
 
+    private CheckBox cbxAutoBak;
+    public boolean autoBak;
+
     private SaveDetector saveDetector;
 
     private FileBackup fileBackup;
@@ -35,13 +37,12 @@ public class OptionsWindow {
     private Path saveDir;
 
     private Watcher watcher;
-    private CheckBox cbxAutoBak;
 
 
-    public OptionsWindow(Watcher watcher){
+    public OptionsWindow(FileBackup fileBackup, Watcher watcher){
         this.watcher = watcher;
         stage = new Stage();
-        fileBackup = new FileBackup();
+        this.fileBackup = fileBackup;
         saveDetector = new SaveDetector(stage);
 
         saveDir = saveDetector.getGameSaveDirProp();
@@ -93,8 +94,9 @@ public class OptionsWindow {
         addBtnBackupHandler();
 
         cbxAutoBak = new CheckBox("AutoBackup");
+        cbxAutoBakDisabled(false);
         cbxAutoBak.setTooltip(new Tooltip("When checked, backups of savefile are automatically made when game Save File changes. Works only when AutoDetect Set is checked (e.g. Savefile is being watched"));
-
+        addCbxAutoBakHandler();
 
         layout.getChildren().addAll(dirLabel, btnChange, statusLabel, btnBackup, cbxAutoBak, watcherLabel, btnAttach);
 
@@ -135,6 +137,12 @@ public class OptionsWindow {
         });
     }
 
+    private void addCbxAutoBakHandler(){
+        cbxAutoBak.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            autoBak = newValue;
+        });
+    }
+
 
     private void changeStatus(boolean status){
         if(status){
@@ -148,4 +156,15 @@ public class OptionsWindow {
         }
     }
 
+    public boolean isAutoBak() {
+        return autoBak;
+    }
+
+    public void cbxAutoBakDisabled(boolean b){
+        cbxAutoBak.setDisable(!b);
+    }
+    public void cbxAutoBakUnselect(){
+        cbxAutoBak.setSelected(false);
+        autoBak = false;
+    }
 }
