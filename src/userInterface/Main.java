@@ -131,7 +131,7 @@ public class Main extends Application{
         vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage, btnSimulate, cbxAutoNextSet, watchStatusLabel);
         borderPane.setLeft(vBoxLeftPaneButtons);
 
-        button_1 = new Button("1");
+        button_1 = new Button("Empty");
         button_1.setPrefSize(50,50);
         button_1.setOnMouseClicked(event -> {
             DecoListView decoListView = new DecoListView(decoRecord, decoListContainer);
@@ -144,7 +144,7 @@ public class Main extends Application{
             }
         });
 
-        button_2 = new Button("2");
+        button_2 = new Button("Empty");
         button_2.setPrefSize(50,50);
         button_2.setOnMouseClicked(event -> {
             DecoListView decoListView = new DecoListView(decoRecord, decoListContainer);
@@ -158,7 +158,7 @@ public class Main extends Application{
             }
         });
 
-        button_3 = new Button("3");
+        button_3 = new Button("Empty");
         button_3.setPrefSize(50,50);
         button_3.setOnMouseClicked(event -> {
             DecoListView decoListView = new DecoListView(decoRecord, decoListContainer);
@@ -318,9 +318,9 @@ public class Main extends Application{
     }
 
     public void clearSlots(){
-        button_1.setText("1");
-        button_2.setText("2");
-        button_3.setText("3");
+        button_1.setText("Empty");
+        button_2.setText("Empty");
+        button_3.setText("Empty");
     }
 
 

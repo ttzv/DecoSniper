@@ -6,7 +6,9 @@ import javafx.beans.value.ObservableBooleanValue;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import utility.Utility;
@@ -33,6 +35,7 @@ public class OptionsWindow {
     private Path saveDir;
 
     private Watcher watcher;
+    private CheckBox cbxAutoBak;
 
 
     public OptionsWindow(Watcher watcher){
@@ -42,8 +45,12 @@ public class OptionsWindow {
         saveDetector = new SaveDetector(stage);
 
         saveDir = saveDetector.getGameSaveDirProp();
-        if(saveDir != null){
-            fileBackup.setSrcPath(saveDir);
+        if(saveDetector.isValid(saveDir)) {
+            if (saveDir != null) {
+                fileBackup.setSrcPath(saveDir);
+            }
+        } else {
+            saveDir = null;
         }
 
         fileBackup.setBackupPath(Utility.defBakPath);
@@ -85,9 +92,11 @@ public class OptionsWindow {
         }
         addBtnBackupHandler();
 
+        cbxAutoBak = new CheckBox("AutoBackup");
+        cbxAutoBak.setTooltip(new Tooltip("When checked, backups of savefile are automatically made when game Save File changes. Works only when AutoDetect Set is checked (e.g. Savefile is being watched"));
 
 
-        layout.getChildren().addAll(dirLabel, btnChange, statusLabel, btnBackup, watcherLabel, btnAttach);
+        layout.getChildren().addAll(dirLabel, btnChange, statusLabel, btnBackup, cbxAutoBak, watcherLabel, btnAttach);
 
     }
 

@@ -89,6 +89,14 @@ class SaveDetector {
             return null;
         }
     }
+
+    /**
+     * Check if given Path exists
+     * @return true if Path exists, otherwise false
+     */
+    boolean isValid(Path path){
+        return Files.exists(path);
+    }
 }
 
 
