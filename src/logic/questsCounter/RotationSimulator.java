@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Calculates amount of quests that need to be completed before next meld.
- * If desired deco is in next set and current rotationStatus == 2 it calls for a method
+ * If desired deco is in next setVanishingText and current rotationStatus == 2 it calls for a method
  * that checks remaining places and returns minimal decos that need to be melded to reach desired deco
  */
 public class RotationSimulator {
@@ -63,7 +63,7 @@ public class RotationSimulator {
         }
         else if(rotationStatus == 3){
             if(observedSet+2 > decoKeySet.get(0)) {
-                System.out.println("Don't do any more quests(quest would skip your set)");
+                System.out.println("Don't do any more quests(quest would skip your setVanishingText)");
                 return -1;
             }
             else{

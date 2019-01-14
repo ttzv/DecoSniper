@@ -20,7 +20,7 @@ public class DecoRecord {
     public DecoRecord(){
         decoList = new ArrayList<>();
         reader = new Scanner(System.in);
-        //nextSet(); //creates new set at start
+        //nextSet(); //creates new setVanishingText at start
     }
 
     /**
@@ -52,7 +52,7 @@ public class DecoRecord {
     }
 
     /**
-     * Generates next set of decos
+     * Generates next setVanishingText of decos
      */
     public void nextSet(){
         numberOfSets++;
@@ -94,11 +94,13 @@ public class DecoRecord {
     }
 
     /**
-     * @return Currently focused set of decorations that is visible in GUI in ArrayList format
+     * @return Currently focused setVanishingText of decorations that is visible in GUI in ArrayList format
      *
      */
     public ArrayList<Integer> getFocusedSet(){
-        return decoList.get(getFocusedSetProperty());
+        if(numberOfSets > 0) {
+            return decoList.get(getFocusedSetProperty());
+        } else return null;
     }
 
     /**

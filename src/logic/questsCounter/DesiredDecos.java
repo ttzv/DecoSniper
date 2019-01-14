@@ -43,7 +43,7 @@ public class DesiredDecos {
             }
             return this.desiredDecoPlacesMap;
         }else{
-            throw new NullPointerException("no items in desired, set some first");
+            throw new NullPointerException("no items in desired, setVanishingText some first");
         }
 
     }

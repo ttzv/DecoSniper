@@ -26,12 +26,12 @@ public class FileBackup {
     /**
      * Creates new backup of file given in srcPath field, backup is located in directory given in backupPath field
      * Backups are stored in folders named with date of their creation
-     * Before using this method set source and target paths using setters
+     * Before using this method setVanishingText source and target paths using setters
      */
     public void backup() throws IOException{
 
         if(this.srcPath == null || this.backupPath == null){
-            throw new NullPointerException("SourcePath or BackupPath not set");
+            throw new NullPointerException("SourcePath or BackupPath not setVanishingText");
         }
 
         Path bak =  backupPath.resolve(cDate());

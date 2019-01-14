@@ -186,7 +186,7 @@ public class ValuablesWindow {
         if(stage != null){
             stage.setScene(changeTo);
         } else {
-            throw new NullPointerException("Returning Scene not set");
+            throw new NullPointerException("Returning Scene not setVanishingText");
         }
     }
 

@@ -98,7 +98,7 @@ public class Main extends Application{
 
         //Initialize VCW window object. getScene to remain in the same window, getStage to show in new window
         ValuablesWindow VCW = new ValuablesWindow(desiredDecos);
-        //set returning point when leaving VCW scene
+        //setVanishingText returning point when leaving VCW scene
         VCW.setScenePrev(scene);
         VCW.build();
 
@@ -172,7 +172,7 @@ public class Main extends Application{
             System.out.println("Next");
             statusBar.clear();
             if(!decoRecord.focusedSetPropertyIncrement()){
-                statusBar.set("No more sets to load");
+                statusBar.setVanishingText("No more sets to load");
             }
             updateSlotsInfo();
             System.out.println("Focusedproperty: " + decoRecord.getFocusedSetProperty() + "numberofsets: " + decoRecord.getNumberOfSets());
@@ -186,7 +186,7 @@ public class Main extends Application{
             System.out.println("Previous");
             statusBar.clear();
             if(!decoRecord.focusedSetPropertyDecrement()){
-                statusBar.set("No previous sets");
+                statusBar.setVanishingText("No previous sets");
             }
             updateSlotsInfo();
             decoListContainer.decrementFocusedProperty();
@@ -279,9 +279,11 @@ public class Main extends Application{
     }
 
     public void updateSlotsInfo(){
-        button_1.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(0)).getName());
-        button_2.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(1)).getName());
-        button_3.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(2)).getName());
+        if(decoRecord.getNumberOfSets() > 0) {
+            button_1.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(0)).getName());
+            button_2.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(1)).getName());
+            button_3.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(2)).getName());
+        }
     }
 
     public void clearSlots(){

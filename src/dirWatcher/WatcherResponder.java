@@ -12,7 +12,7 @@ import java.io.IOException;
 
 
 /**
- * Custom listener for adding next set and refreshing ui
+ * Custom listener for adding next setVanishingText and refreshing ui
  */
 public class WatcherResponder implements WatcherListener{
 
