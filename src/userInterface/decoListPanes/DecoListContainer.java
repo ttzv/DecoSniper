@@ -1,9 +1,11 @@
 package userInterface.decoListPanes;
 
+import decos.Deco;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import userInterface.customControl.DecoNode;
 
 import java.util.ArrayList;
 
@@ -40,9 +42,10 @@ public class DecoListContainer extends ScrollPane {
         for (ArrayList decoSet : decoList){
             cellsList.add(new DecoListCell(
                     counter.toString() + "   ",
-                    decoSet.get(0).toString(),
-                    decoSet.get(1).toString(),
-                    decoSet.get(2).toString()));
+                    new DecoNode(Deco.getDecoByID((int)decoSet.get(0))),
+                    new DecoNode(Deco.getDecoByID((int)decoSet.get(1))),
+                    new DecoNode(Deco.getDecoByID((int)decoSet.get(2)))
+            ));
             //System.out.println(cellsList);
             counter++;
         }

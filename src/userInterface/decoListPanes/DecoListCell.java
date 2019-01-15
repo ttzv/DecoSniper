@@ -1,40 +1,40 @@
 package userInterface.decoListPanes;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import userInterface.customControl.DecoNode;
 
 public class DecoListCell extends HBox {
 
     private Label labelNumber;
-    private Label labelSlot1;
-    private Label labelSlot2;
-    private Label labelSlot3;
+    private Pane decoSlot1;
+    private Pane decoSlot2;
+    private Pane decoSlot3;
 
     private Background defaultBackground;
 
     public DecoListCell(
             String content_1,
-            String content_2,
-            String content_3,
-            String content_4) {
+            DecoNode content_2,
+            DecoNode content_3,
+            DecoNode content_4) {
 
-        setSpacing(5);
+        setSpacing(1);
 
         labelNumber = new Label();
-        labelSlot1 = new Label();
-        labelSlot2 = new Label();
-        labelSlot3 = new Label();
+        labelNumber.setAlignment(Pos.CENTER);
+        decoSlot1 = new Pane();
+        decoSlot2 = new Pane();
+        decoSlot3 = new Pane();
 
         getChildren().addAll(
                 labelNumber,
-                labelSlot1,
-                labelSlot2,
-                labelSlot3);
+                decoSlot1,
+                decoSlot2,
+                decoSlot3);
 
         setLabelsContent(
                 content_1,
@@ -43,13 +43,18 @@ public class DecoListCell extends HBox {
                 content_4);
 
         defaultBackground = getBackground();
+
+        getStylesheets().add(getClass().getResource("decoListCell.css").toExternalForm());
+        decoSlot1.getStyleClass().add("pane");
+        decoSlot2.getStyleClass().add("pane");
+        decoSlot3.getStyleClass().add("pane");
     }
 
-    private void setLabelsContent(String... content){
-        labelNumber.setText(content[0]);
-        labelSlot1.setText(content[1]);
-        labelSlot2.setText(content[2]);
-        labelSlot3.setText(content[3]);
+    private void setLabelsContent(String no, DecoNode... content){
+        labelNumber.setText(no);
+        decoSlot1.getChildren().add(content[0]);
+        decoSlot2.getChildren().add(content[1]);
+        decoSlot3.getChildren().add(content[2]);
     }
 
     public void setBkgOnFocus(boolean focusedPropety){

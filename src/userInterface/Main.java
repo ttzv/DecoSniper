@@ -75,6 +75,7 @@ public class Main extends Application{
         simOutputPane = new SimOutputPane(decoRecord);
 
         decoListContainer = new DecoListContainer(decoRecord.getDecoList());
+        decoListContainer.setPrefWidth(200);
         decoListContainer.getStylesheets().add(Main.class.getResource("styleRecord.css").toExternalForm());
         borderPane.setRight(decoListContainer);
         BorderPane.setMargin(decoListContainer, new Insets(25, 25, 25, 25));
@@ -87,7 +88,7 @@ public class Main extends Application{
         hBoxSlots.setPadding(new Insets(25, 25, 25, 25));
         hBoxAction.setPadding(new Insets(0,0,25,0));
 
-        Scene scene = new Scene(borderPane, 600, 300);
+        Scene scene = new Scene(borderPane, 800, 400);
         scene.getStylesheets().add(Main.class.getResource("style.css").toExternalForm());
 
         ButtonRotation buttonRotation = new ButtonRotation(decoRecord);
@@ -124,10 +125,8 @@ public class Main extends Application{
 
         Label watchStatusLabel = new Label("Watching!");
         watchStatusLabel.setVisible(false);
-        Pane testPane = new Pane();
-        testPane.getChildren().add(new DecoNode(Deco.Attack));
 
-        vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage, btnSimulate, cbxAutoNextSet, watchStatusLabel, testPane);
+        vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage, btnSimulate, cbxAutoNextSet, watchStatusLabel);
         borderPane.setLeft(vBoxLeftPaneButtons);
 
         button_1 = new Button("Empty");

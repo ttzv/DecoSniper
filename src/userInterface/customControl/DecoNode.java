@@ -2,6 +2,7 @@ package userInterface.customControl;
 
 import decos.Deco;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
@@ -39,6 +40,7 @@ public class DecoNode extends GridPane{
      */
     public DecoNode(Deco deco){
 
+        this.setPadding(new Insets(2, 2, 1, 2));
         this.getStylesheets().add(getClass().getResource("decoNode.css").toExternalForm());
         this.deco = deco;
 
