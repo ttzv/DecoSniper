@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -16,6 +17,8 @@ public class DecoListView extends Stage {
 
    private ListView listView;
    private VBox listBox;
+   private HBox topBar;
+   private Button clearBtn;
    private TextField searchInput;
    private ObservableList<Deco> decoObservableList;
 
@@ -30,14 +33,18 @@ public class DecoListView extends Stage {
 
         decoObservableList = FXCollections.observableArrayList();
         decoObservableList.addAll(Deco.getDecosList());
+        topBar = new HBox();
         listBox = new VBox();
+        clearBtn = new Button("X");
         searchInput = new TextField();
+        searchInput.setPrefWidth(300);
         listView = new ListView<Deco>();
         for (Deco d : decoObservableList) {
             listView.getItems().add(d.getName());
         }
         setScene(new Scene(listBox, 250, 300));
-        listBox.getChildren().addAll(searchInput, listView);
+        topBar.getChildren().addAll(clearBtn, searchInput);
+        listBox.getChildren().addAll(topBar, listView);
         focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!observable.getValue() && isShowing()){
                 hide();
@@ -54,6 +61,13 @@ public class DecoListView extends Stage {
             node.setText(newValue.toString());
             Deco choice = Deco.getDecoByName(newValue.toString());
             decoRecord.setSlotInFocusedSet(slot, choice.getId());
+            DecoListView.this.hide();
+            decoListContainer.updateRecord();
+        });
+
+        clearBtn.setOnAction(event -> {
+            node.setText("");
+            decoRecord.setSlotInFocusedSet(slot, 0);
             DecoListView.this.hide();
             decoListContainer.updateRecord();
         });

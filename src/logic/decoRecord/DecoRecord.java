@@ -109,9 +109,9 @@ public class DecoRecord {
      * @param slot 1, 2 or 3 - slot number
      */
     public void setSlotInFocusedSet(int slot, int id){
-        System.out.println("focusedproperty: " + getFocusedSetProperty());
-        ArrayList<Integer> testing = decoList.get(getFocusedSetProperty());
-        decoList.get(getFocusedSetProperty()).set(slot-1, id);
+        if(getFocusedSetProperty() >= 0) {
+            decoList.get(getFocusedSetProperty()).set(slot - 1, id);
+        }
     }
 
     /**

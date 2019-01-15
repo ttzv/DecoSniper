@@ -47,9 +47,9 @@ public class WatcherResponder implements WatcherListener{
         Platform.runLater(() -> {
             statusBar.clear();
             decoRecord.nextSet();
-            b1.setText("Empty");
-            b2.setText("Empty");
-            b3.setText("Empty");
+            b1.setText("");
+            b2.setText("");
+            b3.setText("");
             decoListContainer.resetFocusedProperty();
             decoListContainer.updateRecord();
             if(optionsWindow.isAutoBak()){

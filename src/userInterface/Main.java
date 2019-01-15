@@ -49,8 +49,6 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-
-
         //Initialization of logic
         decoRecord = new DecoRecord();
 
@@ -97,7 +95,7 @@ public class Main extends Application{
         borderPane.setBottom(statusBar.getStatusBar());
 
 
-        desiredDecos = new DesiredDecos(decoRecord.getDecoList());
+        desiredDecos = new DesiredDecos(decoRecord.getDecoList(), statusBar);
 
         //Initialize VCW window object. getScene to remain in the same window, getStage to show in new window
         ValuablesWindow VCW = new ValuablesWindow(desiredDecos);
@@ -129,7 +127,7 @@ public class Main extends Application{
         vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage, btnSimulate, cbxAutoNextSet, watchStatusLabel);
         borderPane.setLeft(vBoxLeftPaneButtons);
 
-        button_1 = new Button("Empty");
+        button_1 = new Button("");
         button_1.setPrefSize(50,50);
         button_1.setOnMouseClicked(event -> {
             DecoListView decoListView = new DecoListView(decoRecord, decoListContainer);
@@ -142,7 +140,7 @@ public class Main extends Application{
             }
         });
 
-        button_2 = new Button("Empty");
+        button_2 = new Button("");
         button_2.setPrefSize(50,50);
         button_2.setOnMouseClicked(event -> {
             DecoListView decoListView = new DecoListView(decoRecord, decoListContainer);
@@ -156,7 +154,7 @@ public class Main extends Application{
             }
         });
 
-        button_3 = new Button("Empty");
+        button_3 = new Button("");
         button_3.setPrefSize(50,50);
         button_3.setOnMouseClicked(event -> {
             DecoListView decoListView = new DecoListView(decoRecord, decoListContainer);
@@ -219,7 +217,11 @@ public class Main extends Application{
             button_A.disableProperty().setValue(newValue);
             if (newValue) {
                 watcher.startWatching();
-                watchStatusLabel.setVisible(watcher.isRegistered());
+                if(watcher.isRegistered()) {
+                    watchStatusLabel.setVisible(true);
+                } else {
+                    statusBar.setVanishingText("Watcher directorg not attached");
+                }
                 optionsWindow.cbxAutoBakDisabled(newValue);
             } else {
                 watcher.stopWatching();
@@ -287,9 +289,9 @@ public class Main extends Application{
     }
 
     public void clearSlots(){
-        button_1.setText("Empty");
-        button_2.setText("Empty");
-        button_3.setText("Empty");
+        button_1.setText("");
+        button_2.setText("");
+        button_3.setText("");
     }
 
 

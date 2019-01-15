@@ -1,6 +1,7 @@
 package logic.questsCounter;
 
 import decos.Deco;
+import userInterface.statusBar.StatusBar;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,11 +18,13 @@ import java.util.TreeMap;
 public class DesiredDecos {
 
     private ArrayList<ArrayList<Integer>> decoList; //main decoList
+    private StatusBar statusBar;
     private ArrayList<Integer> desiredDecoList; //list with desired decos. changeable. at start default values are loaded.
     private TreeMap<Integer, Integer> desiredDecoPlacesMap; //map with places of found desired decos;
 
-    public DesiredDecos(ArrayList<ArrayList<Integer>> decoList) {
+    public DesiredDecos(ArrayList<ArrayList<Integer>> decoList, StatusBar statusBar) {
         this.decoList = decoList;
+        this.statusBar = statusBar;
         desiredDecoPlacesMap = new TreeMap<>();
     }
 
@@ -43,7 +46,8 @@ public class DesiredDecos {
             }
             return this.desiredDecoPlacesMap;
         }else{
-            throw new NullPointerException("no items in desired, setVanishingText some first");
+            statusBar.setVanishingText("No items chosen in Valuables list, set some first");
+            System.err.println("No items chosen in Valuables list, set some first");
         }
 
     }
