@@ -29,7 +29,6 @@ public class ButtonRotation extends Button {
         this.setOnAction(event -> {
            decoRecord.nextRotationStatus();
            updateLabel(labels);
-            System.out.println(decoRecord.getRotationStatus() + " " + decoRecord.getSkipRotation());
         });
 
         defaultTextStyle = labels[0].getStyle();

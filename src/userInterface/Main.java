@@ -98,7 +98,7 @@ public class Main extends Application{
 
         //Initialize VCW window object. getScene to remain in the same window, getStage to show in new window
         ValuablesWindow VCW = new ValuablesWindow(desiredDecos);
-        //setVanishingText returning point when leaving VCW scene
+        //set returning point when leaving VCW scene
         VCW.setScenePrev(scene);
         VCW.build();
 
@@ -169,13 +169,11 @@ public class Main extends Application{
         Button buttonNextSet = new Button(">");
         buttonNextSet.setPrefSize(25, 50);
         buttonNextSet.setOnAction(event -> {
-            System.out.println("Next");
             statusBar.clear();
             if(!decoRecord.focusedSetPropertyIncrement()){
                 statusBar.setVanishingText("No more sets to load");
             }
             updateSlotsInfo();
-            System.out.println("Focusedproperty: " + decoRecord.getFocusedSetProperty() + "numberofsets: " + decoRecord.getNumberOfSets());
             decoListContainer.incrementFocusedProperty();
             decoListContainer.updateFocusedSet();
         });
@@ -183,7 +181,6 @@ public class Main extends Application{
         Button buttonPrevSet = new Button("<");
         buttonPrevSet.setPrefSize(25, 50);
         buttonPrevSet.setOnAction(event -> {
-            System.out.println("Previous");
             statusBar.clear();
             if(!decoRecord.focusedSetPropertyDecrement()){
                 statusBar.setVanishingText("No previous sets");

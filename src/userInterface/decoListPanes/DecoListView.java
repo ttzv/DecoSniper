@@ -46,8 +46,6 @@ public class DecoListView extends Stage {
 
         searchInput.textProperty().addListener((observable, oldValue, newValue) -> {
             search(newValue);
-            System.out.println("oldval: " + oldValue);
-            System.out.println("newval: " + newValue);
         });
     }
 

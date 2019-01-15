@@ -36,8 +36,6 @@ public class FileBackup {
 
         Path bak =  backupPath.resolve(cDate());
 
-        System.out.println(bak);
-
         Files.createDirectories(bak);
 
         if(Files.exists(bak)) {
