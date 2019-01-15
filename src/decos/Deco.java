@@ -10,7 +10,6 @@ import java.util.Arrays;
  * Legend - Deco(ID, Rarity)
  */
 public enum Deco {
-
     Antiblast("Antiblast", "Blast Resistance", 3, 4, 5, 1),
     Antidote("Antidote", "Poison Resistance", 3, 4, 5, 2),
     Antipara("Antipara", "Paralysis Resistance", 3, 4, 5, 3),
@@ -37,6 +36,7 @@ public enum Deco {
     Draw("Draw", "Critical Draw", 3, 124, 8, 24),
     Earplug("Earplug", "Earplugs", 5, 8, 6, 25),
     Elementless("Elementless", "Non-Elemental Boost", 1, 8, 6, 26),
+    Empty("Empty", "Empty", 0, 0, 0, 0),
     Enduring("Enduring", "Item Prolonger", 3, 8, 6, 27),
     Enhancer("Enhancer", "Power Prolonger", 3, 64, 7, 28),
     Evasion("Evasion", "Evade Window ", 5, 8, 6, 29),
@@ -108,8 +108,7 @@ public enum Deco {
     Venom("Venom", "Poison Attack", 3, 8, 6, 95),
     Vitality("Vitality", "Health Boost", 3, 8, 6, 96),
     WaterRes("Water Res", "Water Resistance", 3, 4, 5, 97),
-    WindResist("Wind Resist", "Windproof", 5, 8, 6, 98),
-    Empty("Empty", "Empty", 0, 0, 0, 0);
+    WindResist("Wind Resist", "Windproof", 5, 8, 6, 98);
 
 
     private final String name;
@@ -153,8 +152,8 @@ public enum Deco {
         return id;
     }
 
-    public Color decoColor(){
-        switch (getRarity()){
+    public Color decoColor() {
+        switch (getRarity()) {
             case 5:
                 return Color.LIGHTGREEN;
 
@@ -175,24 +174,24 @@ public enum Deco {
 
     public static ArrayList<String> getDecosNameList() {
         ArrayList<String> decoNameList = new ArrayList<>();
-        for (Deco d : values()){
+        for (Deco d : values()) {
             decoNameList.add(d.getName());
         }
         return decoNameList;
     }
 
-    public static Deco getDecoByID(int id){
-        for (Deco d : values()){
-            if(d.getId() == id){
+    public static Deco getDecoByID(int id) {
+        for (Deco d : values()) {
+            if (d.getId() == id) {
                 return d;
             }
         }
         return null;
     }
 
-    public static Deco getDecoByName(String name){
-        for (Deco d : values()){
-            if(d.getName().equals(name)){
+    public static Deco getDecoByName(String name) {
+        for (Deco d : values()) {
+            if (d.getName().equals(name)) {
                 return d;
             }
         }
@@ -201,38 +200,37 @@ public enum Deco {
 
     public static final ArrayList<Deco> getDecosList() {
         ArrayList<Deco> decoList = new ArrayList<>(Arrays.asList(values()));
-        decoList.remove(decoList.size() - 1 ); //remove Empty from final DecoList
+        decoList.remove(decoList.size() - 1); //remove Empty from final DecoList
         return decoList;
     }
 
-    public static final ArrayList<Deco> getDefaultValuableDecos(){
+    public static final ArrayList<Deco> getDefaultValuableDecos() {
         ArrayList<Deco> decoList = new ArrayList<>();
-        for (Deco d : values()){
-            if(d.getRarity() == 8){
+        for (Deco d : values()) {
+            if (d.getRarity() == 8) {
                 decoList.add(d);
             }
         }
         return decoList;
     }
 
-    public static final ArrayList<Integer> listDecoToId(ArrayList<Deco> decoList){
-        ArrayList<Integer> idList= new ArrayList<>();
+    public static final ArrayList<Integer> listDecoToId(ArrayList<Deco> decoList) {
+        ArrayList<Integer> idList = new ArrayList<>();
 
-        for (Deco d : decoList){
+        for (Deco d : decoList) {
             idList.add(d.getId());
         }
 
         return idList;
     }
 
-    public static final ArrayList<Deco> listIdToDeco(ArrayList<Integer> idList){
+    public static final ArrayList<Deco> listIdToDeco(ArrayList<Integer> idList) {
         ArrayList<Deco> decoList = new ArrayList<>();
-        for (Integer i : idList){
+        for (Integer i : idList) {
             decoList.add(getDecoByID(i));
         }
         return decoList;
     }
-
 
 
 }

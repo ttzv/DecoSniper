@@ -11,12 +11,15 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import logic.decoRecord.DecoRecord;
 import logic.questsCounter.DesiredDecos;
+import userInterface.customControl.DecoNode;
 import userInterface.scene.valuables.ValuablesWindow;
 import userInterface.decoListPanes.DecoListView;
 import userInterface.buttons.ButtonRotation;
@@ -24,7 +27,6 @@ import userInterface.decoListPanes.DecoListContainer;
 import userInterface.simulationOutput.SimOutputPane;
 import userInterface.stages.steamDir.OptionsWindow;
 import userInterface.statusBar.StatusBar;
-
 
 
 public class Main extends Application{
@@ -122,8 +124,10 @@ public class Main extends Application{
 
         Label watchStatusLabel = new Label("Watching!");
         watchStatusLabel.setVisible(false);
+        Pane testPane = new Pane();
+        testPane.getChildren().add(new DecoNode(Deco.Attack));
 
-        vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage, btnSimulate, cbxAutoNextSet, watchStatusLabel);
+        vBoxLeftPaneButtons.getChildren().addAll(buttonRotation, btnShowValStage, btnSimulate, cbxAutoNextSet, watchStatusLabel, testPane);
         borderPane.setLeft(vBoxLeftPaneButtons);
 
         button_1 = new Button("Empty");
