@@ -11,10 +11,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import logic.decoRecord.DecoRecord;
@@ -282,9 +280,9 @@ public class Main extends Application{
 
     public void updateSlotsInfo(){
         if(decoRecord.getNumberOfSets() > 0) {
-            button_1.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(0)).getName());
-            button_2.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(1)).getName());
-            button_3.setText(Deco.getDecoByID(decoRecord.getFocusedSet().get(2)).getName());
+            button_1.setGraphic(new DecoNode(Deco.getDecoByID(decoRecord.getFocusedSet().get(0))));
+            button_2.setGraphic(new DecoNode(Deco.getDecoByID(decoRecord.getFocusedSet().get(1))));
+            button_3.setGraphic(new DecoNode(Deco.getDecoByID(decoRecord.getFocusedSet().get(2))));
         }
     }
 
@@ -292,6 +290,9 @@ public class Main extends Application{
         button_1.setText("");
         button_2.setText("");
         button_3.setText("");
+        button_1.setGraphic(null);
+        button_2.setGraphic(null);
+        button_3.setGraphic(null);
     }
 
 

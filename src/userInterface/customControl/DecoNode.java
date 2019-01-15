@@ -34,11 +34,14 @@ public class DecoNode extends GridPane{
     private Pane spacerRectH;
     private Pane spacerSq;
     private Pane spacerRectV;
+    private boolean clickable;
+
     /**
      * All Deco parameters (max lv, rarity, image) are resolved based on given Deco object, each control need its own object to interact with rest of UI elements
      * @param deco
      */
-    public DecoNode(Deco deco){
+    public DecoNode(Deco deco, boolean clickable){
+        this.clickable = clickable;
 
         this.setPadding(new Insets(2, 2, 1, 2));
         this.getStylesheets().add(getClass().getResource("decoNode.css").toExternalForm());
@@ -82,16 +85,24 @@ public class DecoNode extends GridPane{
         this.add(nLabel, 0, 2, 3, 1);
         GridPane.setHalignment(nLabel, HPos.CENTER);
 
+        if(clickable){
+            makeClickable();
+        }
+    }
 
+    public DecoNode(Deco deco){
+        this(deco, true);
+    }
+
+    public Deco getDeco() {
+        return deco;
+    }
+
+    private void makeClickable(){
         this.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
             System.out.println("clicked on: " + deco.getName());
         });
 
         this.setCursor(Cursor.HAND);
-
-    }
-
-    public Deco getDeco() {
-        return deco;
     }
 }

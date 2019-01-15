@@ -50,6 +50,9 @@ public class WatcherResponder implements WatcherListener{
             b1.setText("");
             b2.setText("");
             b3.setText("");
+            b1.setGraphic(null);
+            b2.setGraphic(null);
+            b3.setGraphic(null);
             decoListContainer.resetFocusedProperty();
             decoListContainer.updateRecord();
             if(optionsWindow.isAutoBak()){

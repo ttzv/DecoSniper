@@ -1,11 +1,10 @@
 package logic.questsCounter;
 
-import decos.Deco;
+
 import userInterface.statusBar.StatusBar;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
+
 import java.util.TreeMap;
 
 /**
@@ -47,7 +46,7 @@ public class DesiredDecos {
             return this.desiredDecoPlacesMap;
         }else{
             statusBar.setVanishingText("No items chosen in Valuables list, set some first");
-            System.err.println("No items chosen in Valuables list, set some first");
+            throw new NullPointerException("No items chosen in Valuables list, set some first");
         }
 
     }

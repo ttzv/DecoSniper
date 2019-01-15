@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import logic.decoRecord.DecoRecord;
+import userInterface.customControl.DecoNode;
 
 public class DecoListView extends Stage {
 
@@ -58,8 +59,8 @@ public class DecoListView extends Stage {
 
     public void handleSelection(Button node, int slot){
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            node.setText(newValue.toString());
             Deco choice = Deco.getDecoByName(newValue.toString());
+            node.setGraphic(new DecoNode(choice, false));
             decoRecord.setSlotInFocusedSet(slot, choice.getId());
             DecoListView.this.hide();
             decoListContainer.updateRecord();
@@ -67,6 +68,7 @@ public class DecoListView extends Stage {
 
         clearBtn.setOnAction(event -> {
             node.setText("");
+            node.setGraphic(null);
             decoRecord.setSlotInFocusedSet(slot, 0);
             DecoListView.this.hide();
             decoListContainer.updateRecord();
